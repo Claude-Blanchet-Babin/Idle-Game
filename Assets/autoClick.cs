@@ -7,6 +7,7 @@ public class autoClick : MonoBehaviour
 
     public scoreManager report;
     public bool autoActiv = false;
+    public bool AutoPurchase = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,10 +25,10 @@ public class autoClick : MonoBehaviour
     {
         while (true)
         {
-            if (autoActiv == true)
+            if (AutoPurchase == true)
             {
-                report.score += 10;
-                report.scoreUI.text = "Score : " + report.score;
+                report.ScoreHearts += report.GainAuto;
+                report.heartUI.text = "HEARTS : " + report.ScoreHearts;
             }
 
             yield return new WaitForSeconds(1);
@@ -37,6 +38,7 @@ public class autoClick : MonoBehaviour
 
     public void changeMode()
     {
+        /*
         if(autoActiv == true)
         {
             autoActiv = false;
@@ -45,6 +47,27 @@ public class autoClick : MonoBehaviour
         else
         {
             autoActiv = true;
+        }
+        */
+    }
+
+    public void Purchase()
+    {
+        if (report.ScoreGolden>= report.AutoPrice && AutoPurchase == false)
+        {
+            AutoPurchase = true;
+            report.ScoreGolden -= report.AutoPrice;
+            report.goldenUI.text = "GOLDEN HEARTS : " + report.ScoreGolden;
+
+        }
+
+        if (AutoPurchase == true && report.ScoreHearts >= report.AutoPriceUpgrade)
+        {
+            report.GainAuto++;
+            report.ScoreHearts -= report.AutoPriceUpgrade;
+            report.heartUI.text = "HEARTS : " + report.ScoreHearts;
+
+            report.AutoPriceUpgrade = report.AutoPriceUpgrade * 1.10f;
         }
     }
 }

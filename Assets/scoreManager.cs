@@ -5,10 +5,25 @@ using TMPro;
 
 public class scoreManager : MonoBehaviour
 {
+    public int RandomLoot;
+    public int Minimum = 0;
+    public int Maximum = 100;
 
-    public int score;
+    public int MaxRandomNormal = 70;
+    public int MaxRandomGold = 95;
 
-    public TextMeshProUGUI scoreUI;
+
+    public float ScoreHearts;
+    public float ScoreGolden;
+    public float ScoreRainbow;
+
+    public TextMeshProUGUI heartUI;
+    public TextMeshProUGUI goldenUI;
+    public TextMeshProUGUI rainbowUI;
+
+    public int GainAuto = 2;
+    public int AutoPrice = 20;
+    public float AutoPriceUpgrade = 50;
 
 
 
@@ -26,8 +41,25 @@ public class scoreManager : MonoBehaviour
 
     public void increase()
     {
-        score++;
-        scoreUI.text = "Score : " + score;
+        RandomLoot = Random.Range(Minimum, Maximum+1);
+
+        if (RandomLoot <= MaxRandomNormal)
+        {
+            ScoreHearts++;
+            heartUI.text = "HEARTS : " + ScoreHearts;
+        }
+
+        if (RandomLoot > MaxRandomNormal && RandomLoot <= MaxRandomGold)
+        {
+            ScoreGolden++;
+            goldenUI.text = "GOLDEN HEARTS : " + ScoreGolden;
+        }
+
+        if (RandomLoot > MaxRandomGold && RandomLoot <= 100)
+        {
+            ScoreRainbow++;
+            rainbowUI.text = "RAINBOW HEARTS : " + ScoreRainbow;
+        }
     }
 
 }

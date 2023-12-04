@@ -18,7 +18,7 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             score ++ ;
             scoreUI.text = "Score : " + score;
@@ -28,12 +28,12 @@ public class NewBehaviourScript : MonoBehaviour
         {
             score++;
             scoreUI.text = "Score : " + score;
-        }
+        }*/
     }
 
-    void OnMouseDown()
+    /*void OnMouseDown()
     {
         score++;
         scoreUI.text = "Score : " + score;
-    }
+    }*/
 }
