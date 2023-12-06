@@ -3,7 +3,14 @@ guid: d248347d1b5d21642800d294f0db1e88
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - heartUI: {instanceID: 0}
+  - goldenUI: {instanceID: 0}
+  - rainbowUI: {instanceID: 0}
+  - RedParticle: {fileID: 9194277438720838998, guid: 62a412cc1c99f904a8b4513acd69f11c, type: 3}
+  - GoldParticle: {fileID: 160442797801915476, guid: c15b7ff6fe9bcc44e86d233825aed52f, type: 3}
+  - RainbowParticle: {fileID: 2949433631376893522, guid: e0af093948012f342a184576ef8b3a5f, type: 3}
+  - Parent: {fileID: 1101505517128754334, guid: 62a412cc1c99f904a8b4513acd69f11c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

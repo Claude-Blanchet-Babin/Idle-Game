@@ -22,15 +22,22 @@ public class scoreManager : MonoBehaviour
     public TextMeshProUGUI rainbowUI;
 
     public int GainAuto = 2;
-    public int AutoPrice = 20;
+    public int AutoPrice;
     public float AutoPriceUpgrade = 50;
+
+    public GameObject RedParticle;
+    public GameObject GoldParticle;
+    public GameObject RainbowParticle;
+
+    public Transform Parent;
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        AutoPrice = 5;
     }
 
     // Update is called once per frame
@@ -46,19 +53,22 @@ public class scoreManager : MonoBehaviour
         if (RandomLoot <= MaxRandomNormal)
         {
             ScoreHearts++;
-            heartUI.text = "HEARTS : " + ScoreHearts;
+            heartUI.text = "HEARTS : " + Mathf.Floor(ScoreHearts);
+            Instantiate(RedParticle, Parent.position, Parent.rotation);
         }
 
         if (RandomLoot > MaxRandomNormal && RandomLoot <= MaxRandomGold)
         {
             ScoreGolden++;
             goldenUI.text = "GOLDEN HEARTS : " + ScoreGolden;
+            Instantiate(GoldParticle, Parent.position, Parent.rotation);
         }
 
         if (RandomLoot > MaxRandomGold && RandomLoot <= 100)
         {
             ScoreRainbow++;
             rainbowUI.text = "RAINBOW HEARTS : " + ScoreRainbow;
+            Instantiate(RainbowParticle, Parent.position, Parent.rotation);
         }
     }
 
