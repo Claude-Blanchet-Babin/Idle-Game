@@ -559,7 +559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 186, y: -19}
+  m_AnchoredPosition: {x: 175, y: -13}
   m_SizeDelta: {x: 261.9319, y: 279.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &800711833
@@ -824,7 +824,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -493, y: -125}
+  m_AnchoredPosition: {x: -440.43, y: -125}
   m_SizeDelta: {x: 593.14, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1175226130
@@ -958,6 +958,8 @@ MonoBehaviour:
   AutoPurchase: 0
   parent: {fileID: 3810509340817694510, guid: 797240063606f0947b4e9c928e69b0af, type: 3}
   Arrow: {fileID: 1532183744964230128, guid: 797240063606f0947b4e9c928e69b0af, type: 3}
+  currentEnemy: {fileID: 0}
+  Enemylist: []
 --- !u!4 &1230724969
 Transform:
   m_ObjectHideFlags: 0
@@ -1367,7 +1369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -96, y: -75}
+  m_AnchoredPosition: {x: -71.26001, y: -75}
   m_SizeDelta: {x: 594.48, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2118442010
