@@ -7,6 +7,8 @@ MonoImporter:
   - report: {instanceID: 0}
   - parent: {fileID: 3810509340817694510, guid: 797240063606f0947b4e9c928e69b0af, type: 3}
   - Arrow: {fileID: 1532183744964230128, guid: 797240063606f0947b4e9c928e69b0af, type: 3}
+  - currentEnemy: {instanceID: 0}
+  - spriteRenderer: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -31,9 +31,6 @@ public class scoreManager : MonoBehaviour
 
     public Transform Parent;
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {

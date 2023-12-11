@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1101505517128754334}
   - component: {fileID: 3504208545101839076}
   - component: {fileID: 5190746130028024529}
+  - component: {fileID: 9169398784140380274}
   m_Layer: 0
   m_Name: Heart Particle
   m_TagString: Untagged
@@ -4886,3 +4887,17 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &9169398784140380274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9194277438720838998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f9b27792c436c4197330340bf3c673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 0}
+  timer: 0
