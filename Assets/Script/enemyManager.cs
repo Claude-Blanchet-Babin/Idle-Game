@@ -17,6 +17,9 @@ public class enemyManager : MonoBehaviour
 
     public bool Enemyactiv;
 
+    public scoreManager report;
+    public float Rob;
+
     /*public int RandomSpawn;
     public Transform Parent;
     public GameObject EnemyAnger;
@@ -47,6 +50,13 @@ public class enemyManager : MonoBehaviour
             timer = 0;
         }
 
+        if(Enemyactiv == true)
+        {
+            report.ScoreHearts -= Rob;
+            report.heartUI.text = "HEARTS : " + Mathf.Floor(report.ScoreHearts);
+
+        }
+
 
     }
 
@@ -61,6 +71,7 @@ public class enemyManager : MonoBehaviour
         //nameEnemyUI.text = currentEnemy.EnemyName;
         hp = currentEnemy.Healpoint;
         //lifeEnemyUI.text = hp.ToString();
+        Rob = currentEnemy.RobEnemy;
     }
 
     /*public void spawnTest()
@@ -85,7 +96,15 @@ public class enemyManager : MonoBehaviour
     {
         if (Enemyactiv == true)
         {
-            hp = hp - 1;
+            if (report.ThunderActiv == false)
+            {
+                hp--;
+            }
+
+            if (report.ThunderActiv == true)
+            {
+                hp-=report.ThunderDamage;
+            }
         }
 
         if (hp <= 0 && Enemyactiv == true)

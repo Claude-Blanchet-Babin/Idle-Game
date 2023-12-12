@@ -20,10 +20,11 @@ public class scoreManager : MonoBehaviour
     public TextMeshProUGUI heartUI;
     public TextMeshProUGUI goldenUI;
     public TextMeshProUGUI rainbowUI;
+    public TextMeshProUGUI autoPriceUI;
 
-    public int GainAuto = 2;
+    public int GainAuto;
     public int AutoPrice;
-    public float AutoPriceUpgrade = 50;
+    public float AutoPriceUpgrade;
 
     public GameObject RedParticle;
     public GameObject GoldParticle;
@@ -31,10 +32,19 @@ public class scoreManager : MonoBehaviour
 
     public Transform Parent;
 
+    public bool ThunderActiv;
+    public float ThunderBoost;
+    public int ThunderDamage;
+
     // Start is called before the first frame update
     void Start()
     {
-        AutoPrice = 5;
+        AutoPrice = 10;
+        AutoPriceUpgrade = 15;
+        GainAuto = 1;
+        ThunderActiv = false;
+        ThunderBoost = 10;
+        ThunderDamage = 3;
     }
 
     // Update is called once per frame
@@ -49,23 +59,37 @@ public class scoreManager : MonoBehaviour
 
         if (RandomLoot <= MaxRandomNormal)
         {
-            ScoreHearts++;
-            heartUI.text = "HEARTS : " + Mathf.Floor(ScoreHearts);
-            Instantiate(RedParticle, Parent.position, Parent.rotation);
+            if(ThunderActiv == false)
+            {
+                ScoreHearts++;
+                heartUI.text = "HEARTS : " + Mathf.Floor(ScoreHearts);
+                Instantiate(RedParticle, Parent.position, Parent.rotation);
+            }
+
+            if (ThunderActiv == true)
+            {
+                ScoreHearts+=ThunderBoost;
+                heartUI.text = "HEARTS : " + Mathf.Floor(ScoreHearts);
+                Instantiate(RedParticle, Parent.position, Parent.rotation);
+            }
+
         }
 
         if (RandomLoot > MaxRandomNormal && RandomLoot <= MaxRandomGold)
         {
             ScoreGolden++;
-            goldenUI.text = "GOLDEN HEARTS : " + ScoreGolden;
+            goldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ScoreGolden);
             Instantiate(GoldParticle, Parent.position, Parent.rotation);
         }
 
         if (RandomLoot > MaxRandomGold && RandomLoot <= 100)
         {
+
             ScoreRainbow++;
-            rainbowUI.text = "RAINBOW HEARTS : " + ScoreRainbow;
+            rainbowUI.text = "RAINBOW HEARTS : " + Mathf.Floor(ScoreRainbow);
             Instantiate(RainbowParticle, Parent.position, Parent.rotation);
+
+
         }
     }
 

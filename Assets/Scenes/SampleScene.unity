@@ -1571,7 +1571,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 994820853}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1819717679}
+        m_TargetAssemblyTypeName: bonusManager, Assembly-CSharp
+        m_MethodName: Thunder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &994820853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1643,13 +1655,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1013378481}
   EnemyList:
-  - {fileID: 11400000, guid: 16c168bc54e6bc744a7bd1ed839d4806, type: 2}
   - {fileID: 11400000, guid: 1e0517328b4fe5b41a76a28b8373b480, type: 2}
+  - {fileID: 11400000, guid: 16c168bc54e6bc744a7bd1ed839d4806, type: 2}
+  - {fileID: 11400000, guid: 16c168bc54e6bc744a7bd1ed839d4806, type: 2}
+  - {fileID: 11400000, guid: 16c168bc54e6bc744a7bd1ed839d4806, type: 2}
+  - {fileID: 11400000, guid: cbe74dfb8d71b7b4ab04cf11265ce391, type: 2}
+  - {fileID: 11400000, guid: cbe74dfb8d71b7b4ab04cf11265ce391, type: 2}
+  - {fileID: 11400000, guid: cbe74dfb8d71b7b4ab04cf11265ce391, type: 2}
+  - {fileID: 11400000, guid: cbe74dfb8d71b7b4ab04cf11265ce391, type: 2}
+  - {fileID: 11400000, guid: cbe74dfb8d71b7b4ab04cf11265ce391, type: 2}
   - {fileID: 11400000, guid: cbe74dfb8d71b7b4ab04cf11265ce391, type: 2}
   hp: 0
   TimeSpawn: 0
   timer: 0
   Enemyactiv: 0
+  report: {fileID: 2063613387}
+  Rob: 0
 --- !u!4 &1013378480
 Transform:
   m_ObjectHideFlags: 0
@@ -2152,6 +2173,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515680138}
   m_CullTransparentMesh: 1
+--- !u!1 &1819717678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1819717680}
+  - component: {fileID: 1819717679}
+  m_Layer: 0
+  m_Name: thunderManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1819717679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819717678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697961a93732e4b42aa2f8d3eed5cae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  report: {fileID: 2063613387}
+  ThunderPrice: 0
+  ThunderTime: 0
+  ThunderCooldown: 0
+--- !u!4 &1819717680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819717678}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.042570405, y: -0.5307094, z: 1.9321811}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1909741479
 GameObject:
   m_ObjectHideFlags: 0
@@ -2357,6 +2426,7 @@ MonoBehaviour:
   heartUI: {fileID: 936540186}
   goldenUI: {fileID: 2118442010}
   rainbowUI: {fileID: 1175226130}
+  autoPriceUI: {fileID: 2107066304}
   GainAuto: 2
   AutoPrice: 20
   AutoPriceUpgrade: 50
@@ -2364,6 +2434,9 @@ MonoBehaviour:
   GoldParticle: {fileID: 160442797801915476, guid: c15b7ff6fe9bcc44e86d233825aed52f, type: 3}
   RainbowParticle: {fileID: 2949433631376893522, guid: e0af093948012f342a184576ef8b3a5f, type: 3}
   Parent: {fileID: 1101505517128754334, guid: 62a412cc1c99f904a8b4513acd69f11c, type: 3}
+  ThunderActiv: 0
+  ThunderBoost: 0
+  ThunderDamage: 0
 --- !u!4 &2063613388
 Transform:
   m_ObjectHideFlags: 0
@@ -2436,7 +2509,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Auto
+  m_text: 10 Golden
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2445,8 +2518,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2469,7 +2542,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2659,3 +2732,4 @@ SceneRoots:
   - {fileID: 2052218102}
   - {fileID: 1013378480}
   - {fileID: 691216769}
+  - {fileID: 1819717680}

@@ -47,18 +47,20 @@ public class autoClick : MonoBehaviour
         {
             AutoPurchase = true;
             report.ScoreGolden -= report.AutoPrice;
-            report.goldenUI.text = "GOLDEN HEARTS : " + report.ScoreGolden;
+            report.goldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(report.ScoreGolden);
             Instantiate(Arrow, parent.position, parent.rotation);
+            report.autoPriceUI.text = "Golden : " + Mathf.Floor(report.AutoPriceUpgrade);
 
         }
 
-        if (AutoPurchase == true && report.ScoreHearts >= report.AutoPriceUpgrade)
+        if (AutoPurchase == true && report.ScoreGolden >= report.AutoPriceUpgrade)
         {
             report.GainAuto++;
-            report.ScoreHearts -= report.AutoPriceUpgrade;
-            report.heartUI.text = "HEARTS : " + Mathf.Floor(report.ScoreHearts);
+            report.ScoreGolden -= report.AutoPriceUpgrade;
+            report.goldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(report.ScoreGolden);
 
             report.AutoPriceUpgrade = report.AutoPriceUpgrade * 1.10f;
+            report.autoPriceUI.text = "Golden : " + Mathf.Floor(report.AutoPriceUpgrade);
         }
     }
 }

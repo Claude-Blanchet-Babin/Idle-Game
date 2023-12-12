@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: EnemyJealous
   m_EditorClassIdentifier: 
   Appareance: {fileID: 21300000, guid: a540d3d09039c2d4a844949a69b985a4, type: 3}
-  Healpoint: 10
+  Healpoint: 5
   EnemyName: Jealous
-  Rob: 5
+  RobEnemy: 0.01
