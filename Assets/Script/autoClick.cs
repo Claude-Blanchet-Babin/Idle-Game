@@ -6,15 +6,16 @@ public class AutoClick : MonoBehaviour
 {
     // Déclaration des variables
 
-    public ScoreManager report;
-    public bool AutoPurchase = false;
+    public ScoreManager ReportScore;
+    public bool AutoPurchase;
 
-    public Transform parent;
+    public Transform Parent;
     public GameObject Arrow;
 
     // Start is called before the first frame update
     void Start()
     {
+        AutoPurchase = false;
         StartCoroutine(AutoCoroutine());
     }
 
@@ -31,8 +32,8 @@ public class AutoClick : MonoBehaviour
             // Activer un gain automatique toute les secondes
             if (AutoPurchase == true)
             {
-                report.ScoreHearts += report.GainAuto;
-                report.heartUI.text = "HEARTS : " + Mathf.Floor(report.ScoreHearts);
+                ReportScore.ScoreHearts += ReportScore.GainAuto;
+                ReportScore.heartUI.text = "HEARTS : " + Mathf.Floor(ReportScore.ScoreHearts);
             }
 
             yield return new WaitForSeconds(1);
@@ -43,25 +44,25 @@ public class AutoClick : MonoBehaviour
     public void Purchase()
     {
         // Phase de premier achat du gain automatique
-        if (report.ScoreGolden>= report.AutoPrice && AutoPurchase == false)
+        if (ReportScore.ScoreGolden>= ReportScore.AutoPrice && AutoPurchase == false)
         {
             AutoPurchase = true;
-            report.ScoreGolden -= report.AutoPrice;
-            report.goldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(report.ScoreGolden);
-            Instantiate(Arrow, parent.position, parent.rotation);
-            report.autoPriceUI.text = "Golden : " + Mathf.Floor(report.AutoPriceUpgrade);
+            ReportScore.ScoreGolden -= ReportScore.AutoPrice;
+            ReportScore.goldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ReportScore.ScoreGolden);
+            Instantiate(Arrow, Parent.position, Parent.rotation);
+            ReportScore.autoPriceUI.text = "Golden : " + Mathf.Floor(ReportScore.AutoPriceUpgrade);
 
         }
 
         // Phase d'amélioration du gain automatique
-        if (AutoPurchase == true && report.ScoreGolden >= report.AutoPriceUpgrade)
+        if (AutoPurchase == true && ReportScore.ScoreGolden >= ReportScore.AutoPriceUpgrade)
         {
-            report.GainAuto++;
-            report.ScoreGolden -= report.AutoPriceUpgrade;
-            report.goldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(report.ScoreGolden);
+            ReportScore.GainAuto++;
+            ReportScore.ScoreGolden -= ReportScore.AutoPriceUpgrade;
+            ReportScore.goldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ReportScore.ScoreGolden);
 
-            report.AutoPriceUpgrade = report.AutoPriceUpgrade * 1.10f;
-            report.autoPriceUI.text = "Golden : " + Mathf.Floor(report.AutoPriceUpgrade);
+            ReportScore.AutoPriceUpgrade = ReportScore.AutoPriceUpgrade * 1.10f;
+            ReportScore.autoPriceUI.text = "Golden : " + Mathf.Floor(ReportScore.AutoPriceUpgrade);
         }
     }
 }

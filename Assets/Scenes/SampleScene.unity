@@ -976,7 +976,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 770576771}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1819717679}
+        m_TargetAssemblyTypeName: BonusManager, Assembly-CSharp
+        m_MethodName: Friendship
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &770576771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1664,8 +1676,9 @@ MonoBehaviour:
   TimeSpawn: 0
   timer: 0
   EnemyActiv: 0
-  report: {fileID: 2063613387}
-  Rob: 0
+  ReportScore: {fileID: 2063613387}
+  rob: 0
+  ReportBonus: {fileID: 1819717679}
 --- !u!4 &1013378480
 Transform:
   m_ObjectHideFlags: 0
@@ -2050,9 +2063,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e868acef8e36c5c4ca65688e6df87fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  report: {fileID: 2063613387}
+  ReportScore: {fileID: 0}
   AutoPurchase: 0
-  parent: {fileID: 3810509340817694510, guid: 797240063606f0947b4e9c928e69b0af, type: 3}
+  Parent: {fileID: 3810509340817694510, guid: 797240063606f0947b4e9c928e69b0af, type: 3}
   Arrow: {fileID: 1532183744964230128, guid: 797240063606f0947b4e9c928e69b0af, type: 3}
 --- !u!4 &1230724969
 Transform:
@@ -2213,7 +2226,7 @@ GameObject:
   - component: {fileID: 1819717680}
   - component: {fileID: 1819717679}
   m_Layer: 0
-  m_Name: ThunderManager
+  m_Name: BonusManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2231,10 +2244,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 697961a93732e4b42aa2f8d3eed5cae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  report: {fileID: 2063613387}
+  ReportScore: {fileID: 2063613387}
   ThunderPrice: 0
   ThunderTime: 0
   ThunderCooldown: 0
+  ThunderActiv: 0
+  FriendPrice: 0
+  FriendTime: 0
+  FriendCooldown: 0
+  FriendActiv: 0
 --- !u!4 &1819717680
 Transform:
   m_ObjectHideFlags: 0
@@ -2499,7 +2517,7 @@ MonoBehaviour:
   GoldParticle: {fileID: 160442797801915476, guid: c15b7ff6fe9bcc44e86d233825aed52f, type: 3}
   RainbowParticle: {fileID: 2949433631376893522, guid: e0af093948012f342a184576ef8b3a5f, type: 3}
   Parent: {fileID: 1101505517128754334, guid: 62a412cc1c99f904a8b4513acd69f11c, type: 3}
-  ThunderActiv: 0
+  ReportBonus: {fileID: 1819717679}
   ThunderBoost: 0
   ThunderDamage: 0
 --- !u!4 &2063613388

@@ -7,7 +7,7 @@ public class ScriptableObjectEnemy : ScriptableObject
 {
     // Définir les différentes caractéristiques des ennemis
     public Sprite Appareance;
-    public int Healpoint;
+    public int HealPoint;
     public string EnemyName;
     public float RobEnemy;
 }

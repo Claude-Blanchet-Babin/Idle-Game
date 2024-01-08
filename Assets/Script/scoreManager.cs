@@ -39,9 +39,11 @@ public class ScoreManager : MonoBehaviour
     public Transform Parent;
 
     // Gestion des bonus
-    public bool ThunderActiv;
+    public BonusManager ReportBonus;
+
     public float ThunderBoost;
     public int ThunderDamage;
+
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +52,6 @@ public class ScoreManager : MonoBehaviour
         AutoPrice = 10;
         AutoPriceUpgrade = 15;
         GainAuto = 1;
-        ThunderActiv = false;
         ThunderBoost = 10;
         ThunderDamage = 3;
     }
@@ -72,7 +73,7 @@ public class ScoreManager : MonoBehaviour
         if (RandomLoot <= MaxRandomNormal)
         {
             // Gagner un seul coeur si le boost n'est pas actif
-            if(ThunderActiv == false)
+            if(ReportBonus.ThunderActiv == false)
             {
                 ScoreHearts++;
                 heartUI.text = "HEARTS : " + Mathf.Floor(ScoreHearts);
@@ -80,7 +81,7 @@ public class ScoreManager : MonoBehaviour
             }
 
             // Gagner plus de coeurs si le boost est actif
-            if (ThunderActiv == true)
+            if (ReportBonus.ThunderActiv == true)
             {
                 ScoreHearts+=ThunderBoost;
                 heartUI.text = "HEARTS : " + Mathf.Floor(ScoreHearts);

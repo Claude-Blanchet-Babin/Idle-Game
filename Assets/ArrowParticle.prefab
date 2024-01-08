@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8553888573170423435}
   - component: {fileID: 391978987774455615}
   m_Layer: 0
-  m_Name: Arrow Particle
+  m_Name: ArrowParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -62,9 +62,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9194277438720838998, guid: 62a412cc1c99f904a8b4513acd69f11c, type: 3}
       propertyPath: m_Name
-      value: Gold Particle Variant
+      value: GoldParticle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9169398784140380274, guid: 62a412cc1c99f904a8b4513acd69f11c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

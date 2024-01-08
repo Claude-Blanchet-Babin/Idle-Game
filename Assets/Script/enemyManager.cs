@@ -17,8 +17,10 @@ public class EnemyManager : MonoBehaviour
 
     public bool EnemyActiv;
 
-    public ScoreManager report;
-    public float Rob;
+    public ScoreManager ReportScore;
+    public float rob;
+
+    public BonusManager ReportBonus;
 
     // Start is called before the first frame update
     void Start()
@@ -43,8 +45,8 @@ public class EnemyManager : MonoBehaviour
         // Activer le vol des coeurs si un ennemi est là
         if(EnemyActiv == true)
         {
-            report.ScoreHearts -= Rob;
-            report.heartUI.text = "HEARTS : " + Mathf.Floor(report.ScoreHearts);
+            ReportScore.ScoreHearts -= rob;
+            ReportScore.heartUI.text = "HEARTS : " + Mathf.Floor(ReportScore.ScoreHearts);
         }
     }
 
@@ -58,9 +60,9 @@ public class EnemyManager : MonoBehaviour
         SpriteRenderer.enabled = true;
         EnemyActiv = true;
         //nameEnemyUI.text = currentEnemy.EnemyName;
-        hp = CurrentEnemy.Healpoint;
+        hp = CurrentEnemy.HealPoint;
         //lifeEnemyUI.text = hp.ToString();
-        Rob = CurrentEnemy.RobEnemy;
+        rob = CurrentEnemy.RobEnemy;
     }
 
     // Faire perdre de la vie à un ennemi lors d'un clic
@@ -69,15 +71,15 @@ public class EnemyManager : MonoBehaviour
         if (EnemyActiv == true)
         {
             // perdre plus de vie si le bonus est actif
-            if (report.ThunderActiv == false)
+            if (ReportBonus.ThunderActiv == false)
             {
                 hp--;
             }
 
             // perte normal sans bonus actif
-            if (report.ThunderActiv == true)
+            if (ReportBonus.ThunderActiv == true)
             {
-                hp-=report.ThunderDamage;
+                hp-= ReportScore.ThunderDamage;
             }
         }
 

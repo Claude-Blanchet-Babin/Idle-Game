@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: EnemyHate
   m_EditorClassIdentifier: 
   Appareance: {fileID: 21300000, guid: 146b79178aba27b4e9dd57f72bcd11d6, type: 3}
-  Healpoint: 15
+  HealPoint: 20
   EnemyName: Hate
   RobEnemy: 0.03
