@@ -1672,12 +1672,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cbe74dfb8d71b7b4ab04cf11265ce391, type: 2}
   - {fileID: 11400000, guid: cbe74dfb8d71b7b4ab04cf11265ce391, type: 2}
   - {fileID: 11400000, guid: cbe74dfb8d71b7b4ab04cf11265ce391, type: 2}
-  hp: 0
+  Hp: 0
   TimeSpawn: 0
-  timer: 0
+  Timer: 0
   EnemyActiv: 0
   ReportScore: {fileID: 2063613387}
-  rob: 0
+  Rob: 0
   ReportBonus: {fileID: 1819717679}
 --- !u!4 &1013378480
 Transform:
@@ -2063,7 +2063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e868acef8e36c5c4ca65688e6df87fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReportScore: {fileID: 0}
+  ReportScore: {fileID: 2063613387}
   AutoPurchase: 0
   Parent: {fileID: 3810509340817694510, guid: 797240063606f0947b4e9c928e69b0af, type: 3}
   Arrow: {fileID: 1532183744964230128, guid: 797240063606f0947b4e9c928e69b0af, type: 3}
@@ -2166,7 +2166,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1230724968}
-        m_TargetAssemblyTypeName: autoClick, Assembly-CSharp
+        m_TargetAssemblyTypeName: AutoClick, Assembly-CSharp
         m_MethodName: Purchase
         m_Mode: 1
         m_Arguments:
@@ -2506,10 +2506,10 @@ MonoBehaviour:
   ScoreHearts: 0
   ScoreGolden: 0
   ScoreRainbow: 0
-  heartUI: {fileID: 936540186}
-  goldenUI: {fileID: 2118442010}
-  rainbowUI: {fileID: 1175226130}
-  autoPriceUI: {fileID: 2107066304}
+  HeartUI: {fileID: 936540186}
+  GoldenUI: {fileID: 2118442010}
+  RainbowUI: {fileID: 1175226130}
+  AutoPriceUI: {fileID: 2107066304}
   GainAuto: 2
   AutoPrice: 20
   AutoPriceUpgrade: 50
@@ -2547,7 +2547,7 @@ GameObject:
   - component: {fileID: 2107066305}
   - component: {fileID: 2107066304}
   m_Layer: 5
-  m_Name: auto
+  m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

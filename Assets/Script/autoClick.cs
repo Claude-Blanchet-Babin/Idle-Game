@@ -7,6 +7,7 @@ public class AutoClick : MonoBehaviour
     // Déclaration des variables
 
     public ScoreManager ReportScore;
+
     public bool AutoPurchase;
 
     public Transform Parent;
@@ -33,7 +34,7 @@ public class AutoClick : MonoBehaviour
             if (AutoPurchase == true)
             {
                 ReportScore.ScoreHearts += ReportScore.GainAuto;
-                ReportScore.heartUI.text = "HEARTS : " + Mathf.Floor(ReportScore.ScoreHearts);
+                ReportScore.HeartUI.text = "HEARTS : " + Mathf.Floor(ReportScore.ScoreHearts);
             }
 
             yield return new WaitForSeconds(1);
@@ -48,9 +49,9 @@ public class AutoClick : MonoBehaviour
         {
             AutoPurchase = true;
             ReportScore.ScoreGolden -= ReportScore.AutoPrice;
-            ReportScore.goldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ReportScore.ScoreGolden);
+            ReportScore.GoldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ReportScore.ScoreGolden);
             Instantiate(Arrow, Parent.position, Parent.rotation);
-            ReportScore.autoPriceUI.text = "Golden : " + Mathf.Floor(ReportScore.AutoPriceUpgrade);
+            ReportScore.AutoPriceUI.text = "Golden : " + Mathf.Floor(ReportScore.AutoPriceUpgrade);
 
         }
 
@@ -59,10 +60,10 @@ public class AutoClick : MonoBehaviour
         {
             ReportScore.GainAuto++;
             ReportScore.ScoreGolden -= ReportScore.AutoPriceUpgrade;
-            ReportScore.goldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ReportScore.ScoreGolden);
+            ReportScore.GoldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ReportScore.ScoreGolden);
 
             ReportScore.AutoPriceUpgrade = ReportScore.AutoPriceUpgrade * 1.10f;
-            ReportScore.autoPriceUI.text = "Golden : " + Mathf.Floor(ReportScore.AutoPriceUpgrade);
+            ReportScore.AutoPriceUI.text = "Golden : " + Mathf.Floor(ReportScore.AutoPriceUpgrade);
         }
     }
 }

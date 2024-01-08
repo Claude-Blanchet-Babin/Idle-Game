@@ -15,4 +15,4 @@ MonoBehaviour:
   Appareance: {fileID: 21300000, guid: 51f333c232f3a364bb2a3014bf786236, type: 3}
   HealPoint: 10
   EnemyName: Anger
-  RobEnemy: 0.02
+  EnemyRob: 0.02

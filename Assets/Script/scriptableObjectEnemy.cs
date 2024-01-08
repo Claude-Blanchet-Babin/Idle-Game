@@ -9,5 +9,5 @@ public class ScriptableObjectEnemy : ScriptableObject
     public Sprite Appareance;
     public int HealPoint;
     public string EnemyName;
-    public float RobEnemy;
+    public float EnemyRob;
 }

@@ -21,10 +21,10 @@ public class ScoreManager : MonoBehaviour
     public float ScoreRainbow;
 
     //Affichage de l'interface
-    public TextMeshProUGUI heartUI;
-    public TextMeshProUGUI goldenUI;
-    public TextMeshProUGUI rainbowUI;
-    public TextMeshProUGUI autoPriceUI;
+    public TextMeshProUGUI HeartUI;
+    public TextMeshProUGUI GoldenUI;
+    public TextMeshProUGUI RainbowUI;
+    public TextMeshProUGUI AutoPriceUI;
 
     // Gestion du mode automatique
     public int GainAuto;
@@ -76,7 +76,7 @@ public class ScoreManager : MonoBehaviour
             if(ReportBonus.ThunderActiv == false)
             {
                 ScoreHearts++;
-                heartUI.text = "HEARTS : " + Mathf.Floor(ScoreHearts);
+                HeartUI.text = "HEARTS : " + Mathf.Floor(ScoreHearts);
                 Instantiate(RedParticle, Parent.position, Parent.rotation);
             }
 
@@ -84,7 +84,7 @@ public class ScoreManager : MonoBehaviour
             if (ReportBonus.ThunderActiv == true)
             {
                 ScoreHearts+=ThunderBoost;
-                heartUI.text = "HEARTS : " + Mathf.Floor(ScoreHearts);
+                HeartUI.text = "HEARTS : " + Mathf.Floor(ScoreHearts);
                 Instantiate(RedParticle, Parent.position, Parent.rotation);
             }
         }
@@ -93,7 +93,7 @@ public class ScoreManager : MonoBehaviour
         if (RandomLoot > MaxRandomNormal && RandomLoot <= MaxRandomGold)
         {
             ScoreGolden++;
-            goldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ScoreGolden);
+            GoldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ScoreGolden);
             Instantiate(GoldParticle, Parent.position, Parent.rotation);
         }
 
@@ -101,7 +101,7 @@ public class ScoreManager : MonoBehaviour
         if (RandomLoot > MaxRandomGold && RandomLoot <= 100)
         {
             ScoreRainbow++;
-            rainbowUI.text = "RAINBOW HEARTS : " + Mathf.Floor(ScoreRainbow);
+            RainbowUI.text = "RAINBOW HEARTS : " + Mathf.Floor(ScoreRainbow);
             Instantiate(RainbowParticle, Parent.position, Parent.rotation);
         }
     }

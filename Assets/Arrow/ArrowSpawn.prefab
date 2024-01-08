@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1264640384887491879}
   m_Layer: 0
-  m_Name: Arrow Spawn
+  m_Name: ArrowSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
