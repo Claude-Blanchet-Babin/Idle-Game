@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class vfxDestruction : MonoBehaviour
+public class VfxDestruction : MonoBehaviour
 {
+    // Déclaration des variables
 
     public GameObject particle;
     public float timer;
-
 
     // Start is called before the first frame update
     void Start()

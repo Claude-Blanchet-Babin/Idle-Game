@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class autoClick : MonoBehaviour
+public class AutoClick : MonoBehaviour
 {
+    // Déclaration des variables
 
-    public scoreManager report;
+    public ScoreManager report;
     public bool AutoPurchase = false;
 
     public Transform parent;
     public GameObject Arrow;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -29,11 +28,11 @@ public class autoClick : MonoBehaviour
     {
         while (true)
         {
+            // Activer un gain automatique toute les secondes
             if (AutoPurchase == true)
             {
                 report.ScoreHearts += report.GainAuto;
                 report.heartUI.text = "HEARTS : " + Mathf.Floor(report.ScoreHearts);
-                
             }
 
             yield return new WaitForSeconds(1);
@@ -43,6 +42,7 @@ public class autoClick : MonoBehaviour
 
     public void Purchase()
     {
+        // Phase de premier achat du gain automatique
         if (report.ScoreGolden>= report.AutoPrice && AutoPurchase == false)
         {
             AutoPurchase = true;
@@ -53,6 +53,7 @@ public class autoClick : MonoBehaviour
 
         }
 
+        // Phase d'amélioration du gain automatique
         if (AutoPurchase == true && report.ScoreGolden >= report.AutoPriceUpgrade)
         {
             report.GainAuto++;

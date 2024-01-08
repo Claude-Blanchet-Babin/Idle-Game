@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class scoreManager : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
+    // Déclaration des variables
+
+    // Gestion du loot des coeurs
     public int RandomLoot;
     public int Minimum = 0;
     public int Maximum = 100;
@@ -12,26 +15,30 @@ public class scoreManager : MonoBehaviour
     public int MaxRandomNormal = 70;
     public int MaxRandomGold = 95;
 
-
+    // Gestion du score 
     public float ScoreHearts;
     public float ScoreGolden;
     public float ScoreRainbow;
 
+    //Affichage de l'interface
     public TextMeshProUGUI heartUI;
     public TextMeshProUGUI goldenUI;
     public TextMeshProUGUI rainbowUI;
     public TextMeshProUGUI autoPriceUI;
 
+    // Gestion du mode automatique
     public int GainAuto;
     public int AutoPrice;
     public float AutoPriceUpgrade;
 
+    // Gestion des particules
     public GameObject RedParticle;
     public GameObject GoldParticle;
     public GameObject RainbowParticle;
 
     public Transform Parent;
 
+    // Gestion des bonus
     public bool ThunderActiv;
     public float ThunderBoost;
     public int ThunderDamage;
@@ -39,6 +46,7 @@ public class scoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Mise à jour des variables
         AutoPrice = 10;
         AutoPriceUpgrade = 15;
         GainAuto = 1;
@@ -55,10 +63,15 @@ public class scoreManager : MonoBehaviour
 
     public void increase()
     {
+        // Mise en place du loot des coeurs
+
+        // Définir un nombre alétoire lors d'un clic
         RandomLoot = Random.Range(Minimum, Maximum+1);
 
+        // Gagner un coeur normal
         if (RandomLoot <= MaxRandomNormal)
         {
+            // Gagner un seul coeur si le boost n'est pas actif
             if(ThunderActiv == false)
             {
                 ScoreHearts++;
@@ -66,15 +79,16 @@ public class scoreManager : MonoBehaviour
                 Instantiate(RedParticle, Parent.position, Parent.rotation);
             }
 
+            // Gagner plus de coeurs si le boost est actif
             if (ThunderActiv == true)
             {
                 ScoreHearts+=ThunderBoost;
                 heartUI.text = "HEARTS : " + Mathf.Floor(ScoreHearts);
                 Instantiate(RedParticle, Parent.position, Parent.rotation);
             }
-
         }
 
+        // Gagner un coeur en or
         if (RandomLoot > MaxRandomNormal && RandomLoot <= MaxRandomGold)
         {
             ScoreGolden++;
@@ -82,15 +96,12 @@ public class scoreManager : MonoBehaviour
             Instantiate(GoldParticle, Parent.position, Parent.rotation);
         }
 
+        // Gagner un coeur arc-en-ciel
         if (RandomLoot > MaxRandomGold && RandomLoot <= 100)
         {
-
             ScoreRainbow++;
             rainbowUI.text = "RAINBOW HEARTS : " + Mathf.Floor(ScoreRainbow);
             Instantiate(RainbowParticle, Parent.position, Parent.rotation);
-
-
         }
     }
-
 }

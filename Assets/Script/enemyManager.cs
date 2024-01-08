@@ -3,118 +3,92 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class enemyManager : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
+    // Déclaration des variables
 
-    public SpriteRenderer spriteRenderer;
-    //public TextMeshProUGUI nameEnemyUI, lifeEnemyUI;
-    public scriptableObjectEnemy[] EnemyList;
-    private scriptableObjectEnemy currentEnemy;
+    public SpriteRenderer SpriteRenderer;
+    public ScriptableObjectEnemy[] EnemyList;
+    private ScriptableObjectEnemy CurrentEnemy;
     public int hp;
 
     public float TimeSpawn;
     public float timer;
 
-    public bool Enemyactiv;
+    public bool EnemyActiv;
 
-    public scoreManager report;
+    public ScoreManager report;
     public float Rob;
-
-    /*public int RandomSpawn;
-    public Transform Parent;
-    public GameObject EnemyAnger;
-    public GameObject EnemyHate;
-    public int enemyLife;
-    */
-
 
     // Start is called before the first frame update
     void Start()
     {
-        Enemyactiv = false;
+        EnemyActiv = false;
+
+        // Définir un premier temps de spawn alétoire
         TimeSpawn = Random.Range(3, 10);
-        //Invoke("EnemySpawn", TimeSpawn);
-
-        //Invoke("spawnTest", 5f);
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        // Vérifier si un ennemi n'est pas actif et si le temps est écoulé
         timer += Time.deltaTime;
-        if (timer >= TimeSpawn && (Enemyactiv == false))
+        if (timer >= TimeSpawn && (EnemyActiv == false))
         {
             EnemySpawn();
             timer = 0;
         }
 
-        if(Enemyactiv == true)
+        // Activer le vol des coeurs si un ennemi est là
+        if(EnemyActiv == true)
         {
             report.ScoreHearts -= Rob;
             report.heartUI.text = "HEARTS : " + Mathf.Floor(report.ScoreHearts);
-
         }
-
-
     }
 
+    // Faire apparaitre les ennemis depuis une liste
     public void EnemySpawn()
     {
 
-        currentEnemy = EnemyList[Random.Range(0, EnemyList.Length)];
+        CurrentEnemy = EnemyList[Random.Range(0, EnemyList.Length)];
 
-        spriteRenderer.sprite = currentEnemy.Appareance;
-        spriteRenderer.enabled = true;
-        Enemyactiv = true;
+        SpriteRenderer.sprite = CurrentEnemy.Appareance;
+        SpriteRenderer.enabled = true;
+        EnemyActiv = true;
         //nameEnemyUI.text = currentEnemy.EnemyName;
-        hp = currentEnemy.Healpoint;
+        hp = CurrentEnemy.Healpoint;
         //lifeEnemyUI.text = hp.ToString();
-        Rob = currentEnemy.RobEnemy;
+        Rob = CurrentEnemy.RobEnemy;
     }
 
-    /*public void spawnTest()
-    {
-        RandomSpawn = Random.Range(0, 100 + 1);
-
-        if (RandomSpawn <= 75)
-        {
-
-            Instantiate(EnemyAnger, Parent.position, Parent.rotation);
-            enemyLife = 3;
-        }
-
-        if (RandomSpawn > 75 && RandomSpawn <= 100)
-        {
-            Instantiate(EnemyHate, Parent.position, Parent.rotation);
-            enemyLife = 5;
-        }
-    }*/
-
+    // Faire perdre de la vie à un ennemi lors d'un clic
     public void OnMouseDown()
     {
-        if (Enemyactiv == true)
+        if (EnemyActiv == true)
         {
+            // perdre plus de vie si le bonus est actif
             if (report.ThunderActiv == false)
             {
                 hp--;
             }
 
+            // perte normal sans bonus actif
             if (report.ThunderActiv == true)
             {
                 hp-=report.ThunderDamage;
             }
         }
 
-        if (hp <= 0 && Enemyactiv == true)
+        // prévoir la disparition d'un ennemi
+        if (hp <= 0 && EnemyActiv == true)
         {
-            spriteRenderer.enabled = false;
+            SpriteRenderer.enabled = false;
             TimeSpawn = Random.Range(3, 10);
             //Invoke("EnemySpawn", TimeSpawn);
-            Enemyactiv = false;
+            EnemyActiv = false;
             timer = 0;
         }
-
     }
 }
