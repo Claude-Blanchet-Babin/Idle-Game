@@ -43,11 +43,18 @@ public class BonusManager : MonoBehaviour
             ThunderActiv = false;
         }
 
-        FriendTime += Time.deltaTime;
+        if (FriendActiv == true)
+        {
+            FriendTime += Time.deltaTime;
+        }
+
 
         if (FriendTime >= 10)
         {
+            FriendTime = 0;
             FriendActiv = false;
+            ReportScore.MaxRandomGold += ReportScore.FriendBoost;
+            ReportScore.MaxRandomNormal -= ReportScore.FriendBoost;
         }
     }
 
@@ -72,6 +79,9 @@ public class BonusManager : MonoBehaviour
             ReportScore.ScoreGolden -= FriendPrice;
             ReportScore.GoldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ReportScore.ScoreGolden);
             FriendTime = 0;
+
+            ReportScore.MaxRandomGold -= ReportScore.FriendBoost;
+            ReportScore.MaxRandomNormal += ReportScore.FriendBoost;
         }
     }
 }

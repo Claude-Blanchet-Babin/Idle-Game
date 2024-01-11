@@ -12,8 +12,8 @@ public class ScoreManager : MonoBehaviour
     public int Minimum = 0;
     public int Maximum = 100;
 
-    public int MaxRandomNormal = 70;
-    public int MaxRandomGold = 95;
+    public int MaxRandomNormal;
+    public int MaxRandomGold;
 
     // Gestion du score 
     public float ScoreHearts;
@@ -44,6 +44,8 @@ public class ScoreManager : MonoBehaviour
     public float ThunderBoost;
     public int ThunderDamage;
 
+    public int FriendBoost;
+
 
     // Start is called before the first frame update
     void Start()
@@ -54,12 +56,17 @@ public class ScoreManager : MonoBehaviour
         GainAuto = 1;
         ThunderBoost = 10;
         ThunderDamage = 3;
+        FriendBoost = 10;
+
+        MaxRandomNormal = 70;
+        MaxRandomGold = 95;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+
     }
 
     public void increase()

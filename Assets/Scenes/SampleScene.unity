@@ -1673,11 +1673,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cbe74dfb8d71b7b4ab04cf11265ce391, type: 2}
   - {fileID: 11400000, guid: cbe74dfb8d71b7b4ab04cf11265ce391, type: 2}
   Hp: 0
+  Rob: 0
   TimeSpawn: 0
   Timer: 0
   EnemyActiv: 0
   ReportScore: {fileID: 2063613387}
-  Rob: 0
   ReportBonus: {fileID: 1819717679}
 --- !u!4 &1013378480
 Transform:
@@ -2501,7 +2501,7 @@ MonoBehaviour:
   RandomLoot: 0
   Minimum: 1
   Maximum: 100
-  MaxRandomNormal: 60
+  MaxRandomNormal: 70
   MaxRandomGold: 95
   ScoreHearts: 0
   ScoreGolden: 0
@@ -2520,6 +2520,7 @@ MonoBehaviour:
   ReportBonus: {fileID: 1819717679}
   ThunderBoost: 0
   ThunderDamage: 0
+  FriendBoost: 0
 --- !u!4 &2063613388
 Transform:
   m_ObjectHideFlags: 0
