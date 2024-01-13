@@ -7,6 +7,7 @@ public class AutoClick : MonoBehaviour
     // Déclaration des variables
 
     public ScoreManager ReportScore;
+    public lotteryManager ReportLottery;
 
     public bool AutoPurchase;
 
@@ -37,6 +38,13 @@ public class AutoClick : MonoBehaviour
                 ReportScore.HeartUI.text = "HEARTS : " + Mathf.Floor(ReportScore.ScoreHearts);
             }
 
+            if (ReportLottery.AphroditeActiv == true && AutoPurchase == true)
+            {
+                ReportScore.ScoreGolden += ReportLottery.GainAphrodite;
+                ReportScore.GoldenUI.text = "GOLDEN : " + Mathf.Floor(ReportScore.ScoreGolden);
+            }
+
+
             yield return new WaitForSeconds(1);
         }
 
@@ -50,7 +58,7 @@ public class AutoClick : MonoBehaviour
             AutoPurchase = true;
             ReportScore.ScoreGolden -= ReportScore.AutoPrice;
             ReportScore.GoldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ReportScore.ScoreGolden);
-            Instantiate(Arrow, Parent.position, Parent.rotation);
+            //Instantiate(Arrow, Parent.position, Parent.rotation);
             ReportScore.AutoPriceUI.text = "Golden : " + Mathf.Floor(ReportScore.AutoPriceUpgrade);
 
         }

@@ -13,6 +13,8 @@ public class EnemyManager : MonoBehaviour
     public int Hp;
     public float Rob;
 
+    public int ClickDamage;
+
     public float TimeSpawn;
     public float Timer;
 
@@ -26,6 +28,7 @@ public class EnemyManager : MonoBehaviour
     void Start()
     {
         EnemyActiv = false;
+        ClickDamage = 1;
 
         // Définir un premier temps de spawn alétoire
         TimeSpawn = Random.Range(3, 10);
@@ -73,13 +76,13 @@ public class EnemyManager : MonoBehaviour
             // perdre plus de vie si le bonus est actif
             if (ReportBonus.ThunderActiv == false)
             {
-                Hp--;
+                Hp-= ClickDamage;
             }
 
             // perte normal sans bonus actif
             if (ReportBonus.ThunderActiv == true)
             {
-                Hp-= ReportScore.ThunderDamage;
+                Hp-= ReportScore.ThunderDamage + ClickDamage;
             }
         }
 
@@ -88,7 +91,6 @@ public class EnemyManager : MonoBehaviour
         {
             SpriteRenderer.enabled = false;
             TimeSpawn = Random.Range(3, 10);
-            //Invoke("EnemySpawn", TimeSpawn);
             EnemyActiv = false;
             Timer = 0;
         }

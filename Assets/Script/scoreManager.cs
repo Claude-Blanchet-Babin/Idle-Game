@@ -20,6 +20,9 @@ public class ScoreManager : MonoBehaviour
     public float ScoreGolden;
     public float ScoreRainbow;
 
+    public float HeartIncrease;
+    public float GoldenIncrease;
+
     //Affichage de l'interface
     public TextMeshProUGUI HeartUI;
     public TextMeshProUGUI GoldenUI;
@@ -60,6 +63,9 @@ public class ScoreManager : MonoBehaviour
 
         MaxRandomNormal = 70;
         MaxRandomGold = 95;
+
+        HeartIncrease = 1; 
+        GoldenIncrease = 1;
     }
 
     // Update is called once per frame
@@ -69,7 +75,7 @@ public class ScoreManager : MonoBehaviour
 
     }
 
-    public void increase()
+    public void Increase()
     {
         // Mise en place du loot des coeurs
 
@@ -82,7 +88,7 @@ public class ScoreManager : MonoBehaviour
             // Gagner un seul coeur si le boost n'est pas actif
             if(ReportBonus.ThunderActiv == false)
             {
-                ScoreHearts++;
+                ScoreHearts+= HeartIncrease;
                 HeartUI.text = "HEARTS : " + Mathf.Floor(ScoreHearts);
                 Instantiate(RedParticle, Parent.position, Parent.rotation);
             }
@@ -90,7 +96,7 @@ public class ScoreManager : MonoBehaviour
             // Gagner plus de coeurs si le boost est actif
             if (ReportBonus.ThunderActiv == true)
             {
-                ScoreHearts+=ThunderBoost;
+                ScoreHearts+=ThunderBoost + HeartIncrease;
                 HeartUI.text = "HEARTS : " + Mathf.Floor(ScoreHearts);
                 Instantiate(RedParticle, Parent.position, Parent.rotation);
             }
@@ -99,7 +105,7 @@ public class ScoreManager : MonoBehaviour
         // Gagner un coeur en or
         if (RandomLoot > MaxRandomNormal && RandomLoot <= MaxRandomGold)
         {
-            ScoreGolden++;
+            ScoreGolden+= GoldenIncrease;
             GoldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ScoreGolden);
             Instantiate(GoldParticle, Parent.position, Parent.rotation);
         }
