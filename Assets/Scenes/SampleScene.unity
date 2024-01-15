@@ -1725,6 +1725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ArrowParticle: {fileID: 914918729}
   ReportAuto: {fileID: 1230724968}
+  ReportScore: {fileID: 2063613387}
   ParticleActiv: 0
 --- !u!199 &914918728
 ParticleSystemRenderer:
@@ -2745,7 +2746,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 1
+        scalar: 30
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -2796,7 +2797,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
       cycleCount: 1
-      repeatInterval: 1
+      repeatInterval: 0.01
       probability: 1
   SizeModule:
     enabled: 0

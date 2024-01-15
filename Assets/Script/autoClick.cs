@@ -41,7 +41,7 @@ public class AutoClick : MonoBehaviour
             if (ReportLottery.AphroditeActiv == true && AutoPurchase == true)
             {
                 ReportScore.ScoreGolden += ReportLottery.GainAphrodite;
-                ReportScore.GoldenUI.text = "GOLDEN : " + Mathf.Floor(ReportScore.ScoreGolden);
+                ReportScore.GoldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ReportScore.ScoreGolden);
             }
 
 

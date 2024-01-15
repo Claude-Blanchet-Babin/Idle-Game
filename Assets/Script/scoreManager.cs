@@ -54,8 +54,8 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         // Mise à jour des variables
-        AutoPrice = 10;
-        AutoPriceUpgrade = 15;
+        AutoPrice = 1;
+        AutoPriceUpgrade = 1;
         GainAuto = 1;
         ThunderBoost = 10;
         ThunderDamage = 3;

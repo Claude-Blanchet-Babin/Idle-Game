@@ -64,7 +64,7 @@ public class lotteryManager : MonoBehaviour
 
     public void Lottery()
     {
-        if (ReportScore.ScoreRainbow >= -50000)
+        if (ReportScore.ScoreRainbow >= 5)
         {
 
             ReportScore.ScoreRainbow -= 5;
