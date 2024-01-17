@@ -53,7 +53,10 @@ public class lotteryManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        AppleUI.enabled = false;
+        ShellUI.enabled = false;
+        JewellUI.enabled = false;
+        AphroditeUI.enabled = false;
     }
 
     // Update is called once per frame
@@ -64,7 +67,7 @@ public class lotteryManager : MonoBehaviour
 
     public void Lottery()
     {
-        if (ReportScore.ScoreRainbow >= 5)
+        if (ReportScore.ScoreRainbow >= -50000)
         {
 
             ReportScore.ScoreRainbow -= 5;
@@ -80,6 +83,7 @@ public class lotteryManager : MonoBehaviour
 
                 if (AppleActiv == false)
                 {
+                    AppleUI.enabled = true;
                     Instantiate(Apple, PositionApple, Quaternion.identity);
                     AppleActiv = true;
                 }
@@ -96,6 +100,7 @@ public class lotteryManager : MonoBehaviour
 
                 if (ShellActiv == false)
                 {
+                    ShellUI.enabled = true;
                     Instantiate(Shell, PositionShell, Quaternion.identity);
                     ShellActiv = true;
                 }
@@ -112,6 +117,7 @@ public class lotteryManager : MonoBehaviour
 
                 if (JewellActiv == false)
                 {
+                    JewellUI.enabled = true;
                     Instantiate(Jewell, PositionJewell, Quaternion.identity);
                     JewellActiv = true;
                 }
@@ -128,6 +134,7 @@ public class lotteryManager : MonoBehaviour
 
                 if (AphroditeActiv == false)
                 {
+                    AphroditeUI.enabled = true;
                     Instantiate(Aphrodite, PositionAphrodite, Quaternion.identity);
                     AphroditeActiv = true;
                 }
