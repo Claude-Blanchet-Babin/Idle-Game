@@ -12,6 +12,7 @@ public class EnemyManager : MonoBehaviour
     private ScriptableObjectEnemy CurrentEnemy;
     public int Hp;
     public float Rob;
+    public TextMeshProUGUI NameEnemyUI;
 
     public int ClickDamage;
 
@@ -24,9 +25,14 @@ public class EnemyManager : MonoBehaviour
     
     public BonusManager ReportBonus;
 
+    private Vector3 OriginalScale;
+
+    public GameObject DarkBackground;
+
     // Start is called before the first frame update
     void Start()
     {
+        DarkBackground.SetActive(false);
         EnemyActiv = false;
         ClickDamage = 1;
 
@@ -49,20 +55,23 @@ public class EnemyManager : MonoBehaviour
         if(EnemyActiv == true)
         {
             ReportScore.ScoreHearts -= Rob;
-            ReportScore.HeartUI.text = "HEARTS : " + Mathf.Floor(ReportScore.ScoreHearts);
+            ReportScore.HeartUI.text = ": " + Mathf.Floor(ReportScore.ScoreHearts);
         }
     }
 
     // Faire apparaitre les ennemis depuis une liste
     public void EnemySpawn()
     {
-
+        DarkBackground.SetActive(true);
         CurrentEnemy = EnemyList[Random.Range(0, EnemyList.Length)];
+
+        // Enregistrez l'échelle originale du bouton au démarrage
+        OriginalScale = transform.localScale;
 
         SpriteRenderer.sprite = CurrentEnemy.Appareance;
         SpriteRenderer.enabled = true;
         EnemyActiv = true;
-        //nameEnemyUI.text = currentEnemy.EnemyName;
+        NameEnemyUI.text = CurrentEnemy.EnemyName;
         Hp = CurrentEnemy.HealPoint;
         //lifeEnemyUI.text = Hp.ToString();
         Rob = CurrentEnemy.EnemyRob;
@@ -84,6 +93,8 @@ public class EnemyManager : MonoBehaviour
             {
                 Hp-= ReportScore.ThunderDamage + ClickDamage;
             }
+
+            LeanTween.scale(gameObject, OriginalScale * 1.1f, 0.05f).setEase(LeanTweenType.easeOutQuad).setOnComplete(ResetScale);
         }
 
         // prévoir la disparition d'un ennemi
@@ -93,6 +104,14 @@ public class EnemyManager : MonoBehaviour
             TimeSpawn = Random.Range(3, 10);
             EnemyActiv = false;
             Timer = 0;
+            NameEnemyUI.text = "";
+            DarkBackground.SetActive(false);
         }
+    }
+
+    void ResetScale()
+    {
+        // Rétablissez l'échelle initiale après l'effet de rebond
+        LeanTween.scale(gameObject, OriginalScale, 0.1f).setEase(LeanTweenType.easeInQuad);
     }
 }

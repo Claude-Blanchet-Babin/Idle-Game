@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 9194277438720838998}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 146.7}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 0.35
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -735,7 +735,7 @@ ParticleSystem:
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
     m_SkinnedMeshRenderer: {fileID: 0}
-    m_Sprite: {fileID: 21300000, guid: 0ee87e082b8a13e43b7caabc99ac423b, type: 3}
+    m_Sprite: {fileID: 21300000, guid: 3dc673d61c4feb84da84f4a4b1183cf9, type: 3}
     m_SpriteRenderer: {fileID: 6359771952274748122, guid: af7fb3e87c958934f82e5c5b86d0b087, type: 3}
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
@@ -1030,7 +1030,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 30
+      cycleCount: 10
       repeatInterval: 0.01
       probability: 1
   SizeModule:

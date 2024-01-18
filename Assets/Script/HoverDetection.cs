@@ -5,44 +5,48 @@ using UnityEngine.EventSystems;
 
 public class HoverDetection : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private bool isMouseOver = false;
+    private bool IsMouseOver = false;
 
-    public GameObject ThunderTooltip;
+    public GameObject Tooltip;
+    public GameObject Parchment;
 
     // Appelé lorsque la souris entre dans la zone du bouton
 
     void Start()
     {
-        ThunderTooltip.SetActive(false);
+        Tooltip.SetActive(false);
+        Parchment.SetActive(false);
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        isMouseOver = true;
+        IsMouseOver = true;
     }
 
     // Appelé lorsque la souris quitte la zone du bouton
     public void OnPointerExit(PointerEventData eventData)
     {
-        isMouseOver = false;
+        IsMouseOver = false;
     }
 
     void Update()
     {
-        if (isMouseOver)
+        if (IsMouseOver)
         {
             // Ajoutez votre logique ici, qui sera exécutée tant que la souris est sur le bouton.
-            Debug.Log("La souris est sur le bouton !");
+            //Debug.Log("La souris est sur le bouton !");
 
-            ThunderTooltip.SetActive(true);
+            Tooltip.SetActive(true);
+            Parchment.SetActive(true);
 
         }
 
-        if (isMouseOver==false)
+        if (IsMouseOver==false)
         {
             // Ajoutez votre logique ici, qui sera exécutée tant que la souris est sur le bouton.
-            Debug.Log("La souris est sur le bouton !");
+            //Debug.Log("La souris est sur le bouton !");
 
-            ThunderTooltip.SetActive(false);
+            Tooltip.SetActive(false);
+            Parchment.SetActive(false);
 
         }
 

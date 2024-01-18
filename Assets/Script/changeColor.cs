@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class changeColor : MonoBehaviour
+public class ChangeColor : MonoBehaviour
 {
     public BonusManager ReportBonus;
 

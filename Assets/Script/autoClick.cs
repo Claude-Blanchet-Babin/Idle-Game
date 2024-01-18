@@ -7,7 +7,7 @@ public class AutoClick : MonoBehaviour
     // Déclaration des variables
 
     public ScoreManager ReportScore;
-    public lotteryManager ReportLottery;
+    public LotteryManager ReportLottery;
 
     public bool AutoPurchase;
 
@@ -35,13 +35,13 @@ public class AutoClick : MonoBehaviour
             if (AutoPurchase == true)
             {
                 ReportScore.ScoreHearts += ReportScore.GainAuto;
-                ReportScore.HeartUI.text = "HEARTS : " + Mathf.Floor(ReportScore.ScoreHearts);
+                ReportScore.HeartUI.text = ": " + Mathf.Floor(ReportScore.ScoreHearts);
             }
 
-            if (ReportLottery.AphroditeActiv == true && AutoPurchase == true)
+            if (ReportLottery.HeliosActiv == true && AutoPurchase == true)
             {
-                ReportScore.ScoreGolden += ReportLottery.GainAphrodite;
-                ReportScore.GoldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ReportScore.ScoreGolden);
+                ReportScore.ScoreGolden += ReportLottery.GainHelios;
+                ReportScore.GoldenUI.text = ": " + Mathf.Floor(ReportScore.ScoreGolden);
             }
 
 
@@ -57,9 +57,9 @@ public class AutoClick : MonoBehaviour
         {
             AutoPurchase = true;
             ReportScore.ScoreGolden -= ReportScore.AutoPrice;
-            ReportScore.GoldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ReportScore.ScoreGolden);
+            ReportScore.GoldenUI.text = ": " + Mathf.Floor(ReportScore.ScoreGolden);
             //Instantiate(Arrow, Parent.position, Parent.rotation);
-            ReportScore.AutoPriceUI.text = "Golden : " + Mathf.Floor(ReportScore.AutoPriceUpgrade);
+            ReportScore.AutoPriceUI.text = ": " + Mathf.Floor(ReportScore.AutoPriceUpgrade);
 
         }
 
@@ -68,10 +68,10 @@ public class AutoClick : MonoBehaviour
         {
             ReportScore.GainAuto++;
             ReportScore.ScoreGolden -= ReportScore.AutoPriceUpgrade;
-            ReportScore.GoldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ReportScore.ScoreGolden);
+            ReportScore.GoldenUI.text = ": " + Mathf.Floor(ReportScore.ScoreGolden);
 
             ReportScore.AutoPriceUpgrade = ReportScore.AutoPriceUpgrade * 1.10f;
-            ReportScore.AutoPriceUI.text = "Golden : " + Mathf.Floor(ReportScore.AutoPriceUpgrade);
+            ReportScore.AutoPriceUI.text = ": " + Mathf.Floor(ReportScore.AutoPriceUpgrade);
         }
     }
 }

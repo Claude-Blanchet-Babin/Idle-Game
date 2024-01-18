@@ -79,7 +79,7 @@ public class BonusManager : MonoBehaviour
         {
             ThunderActiv = true;
             ReportScore.ScoreGolden -= ThunderPrice;
-            ReportScore.GoldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ReportScore.ScoreGolden);
+            ReportScore.GoldenUI.text = ": " + Mathf.Floor(ReportScore.ScoreGolden);
             ThunderTime = 0;
         }
     }
@@ -91,7 +91,7 @@ public class BonusManager : MonoBehaviour
         {
             FriendActiv = true;
             ReportScore.ScoreGolden -= FriendPrice;
-            ReportScore.GoldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ReportScore.ScoreGolden);
+            ReportScore.GoldenUI.text = ": " + Mathf.Floor(ReportScore.ScoreGolden);
             FriendTime = 0;
 
             ReportScore.MaxRandomGold -= ReportScore.FriendBoost;

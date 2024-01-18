@@ -89,7 +89,7 @@ public class ScoreManager : MonoBehaviour
             if(ReportBonus.ThunderActiv == false)
             {
                 ScoreHearts+= HeartIncrease;
-                HeartUI.text = "HEARTS : " + Mathf.Floor(ScoreHearts);
+                HeartUI.text = ": " + Mathf.Floor(ScoreHearts);
                 Instantiate(RedParticle, Parent.position, Parent.rotation);
             }
 
@@ -97,7 +97,7 @@ public class ScoreManager : MonoBehaviour
             if (ReportBonus.ThunderActiv == true)
             {
                 ScoreHearts+=ThunderBoost + HeartIncrease;
-                HeartUI.text = "HEARTS : " + Mathf.Floor(ScoreHearts);
+                HeartUI.text = ": " + Mathf.Floor(ScoreHearts);
                 Instantiate(RedParticle, Parent.position, Parent.rotation);
             }
         }
@@ -106,7 +106,7 @@ public class ScoreManager : MonoBehaviour
         if (RandomLoot > MaxRandomNormal && RandomLoot <= MaxRandomGold)
         {
             ScoreGolden+= GoldenIncrease;
-            GoldenUI.text = "GOLDEN HEARTS : " + Mathf.Floor(ScoreGolden);
+            GoldenUI.text = ": " + Mathf.Floor(ScoreGolden);
             Instantiate(GoldParticle, Parent.position, Parent.rotation);
         }
 
@@ -114,7 +114,7 @@ public class ScoreManager : MonoBehaviour
         if (RandomLoot > MaxRandomGold && RandomLoot <= 100)
         {
             ScoreRainbow++;
-            RainbowUI.text = "RAINBOW HEARTS : " + Mathf.Floor(ScoreRainbow);
+            RainbowUI.text = ": " + Mathf.Floor(ScoreRainbow);
             Instantiate(RainbowParticle, Parent.position, Parent.rotation);
         }
     }

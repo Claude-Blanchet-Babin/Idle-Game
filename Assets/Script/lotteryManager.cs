@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class lotteryManager : MonoBehaviour
+public class LotteryManager : MonoBehaviour
 {
     // Déclaration des variables
 
@@ -14,32 +14,34 @@ public class lotteryManager : MonoBehaviour
 
     public int MaxRandomApple = 60;
     public int MaxRandomShell = 90;
-    public int MaxRandomJewell = 99;
+    public int MaxRandomJewel = 99;
 
     public int NumberApple;
     public int NumberShell;
-    public int NumberJewell;
-    public int NumberAphrodite;
+    public int NumberJewel;
+    public int NumberHelios;
 
     public TextMeshProUGUI AppleUI;
     public TextMeshProUGUI ShellUI;
-    public TextMeshProUGUI JewellUI;
-    public TextMeshProUGUI AphroditeUI;
+    public TextMeshProUGUI JewelUI;
+    public TextMeshProUGUI HeliosUI;
 
     public bool AppleActiv = false;
     public bool ShellActiv = false;
-    public bool JewellActiv = false;
-    public bool AphroditeActiv = false;
+    public bool JewelActiv = false;
+    public bool HeliosActiv = false;
 
+    /*
     public Vector3 PositionApple = new Vector3(8.3f, 4f, 0f);
     public Vector3 PositionShell = new Vector3(6.3f, 4f, 0f);
-    public Vector3 PositionJewell = new Vector3(4.3f, 4f, 0f);
-    public Vector3 PositionAphrodite = new Vector3(2.3f, 2f, 0f);
+    public Vector3 PositionJewel = new Vector3(4.3f, 4f, 0f);
+    public Vector3 PositionHelios = new Vector3(2.3f, 2f, 0f);
+    */
 
     public GameObject Apple;
     public GameObject Shell;
-    public GameObject Jewell;
-    public GameObject Aphrodite;
+    public GameObject Jewel;
+    public GameObject Helios;
 
     public ScoreManager ReportScore;
 
@@ -47,7 +49,17 @@ public class lotteryManager : MonoBehaviour
 
     public EnemyManager ReportEnemy;
 
-    public int GainAphrodite =0;
+    public int GainHelios =0;
+
+    public GameObject AppleBackground;
+    public GameObject ShellBackground;
+    public GameObject JewelBackground;
+    public GameObject HeliosBackground;
+
+    public GameObject AppleParchment;
+    public GameObject ShellParchment;
+    public GameObject JewelParchment;
+    public GameObject HeliosParchment;
 
 
     // Start is called before the first frame update
@@ -55,8 +67,23 @@ public class lotteryManager : MonoBehaviour
     {
         AppleUI.enabled = false;
         ShellUI.enabled = false;
-        JewellUI.enabled = false;
-        AphroditeUI.enabled = false;
+        JewelUI.enabled = false;
+        HeliosUI.enabled = false;
+
+        Apple.SetActive(false);
+        Shell.SetActive(false);
+        Jewel.SetActive(false);
+        Helios.SetActive(false);
+
+        AppleBackground.SetActive(false);
+        ShellBackground.SetActive(false);
+        JewelBackground.SetActive(false);
+        HeliosBackground.SetActive(false);
+
+        AppleParchment.SetActive(false);
+        ShellParchment.SetActive(false);
+        JewelParchment.SetActive(false);
+        HeliosParchment.SetActive(false);
     }
 
     // Update is called once per frame
@@ -71,7 +98,7 @@ public class lotteryManager : MonoBehaviour
         {
 
             ReportScore.ScoreRainbow -= 5;
-            ReportScore.RainbowUI.text = "RAINBOW HEARTS : " + Mathf.Floor(ReportScore.ScoreRainbow);
+            ReportScore.RainbowUI.text = ": " + Mathf.Floor(ReportScore.ScoreRainbow);
 
             // Définir un nombre alétoire lors d'un clic
             RandomLoot = Random.Range(Minimum, Maximum + 1);
@@ -84,7 +111,8 @@ public class lotteryManager : MonoBehaviour
                 if (AppleActiv == false)
                 {
                     AppleUI.enabled = true;
-                    Instantiate(Apple, PositionApple, Quaternion.identity);
+                    Apple.SetActive(true);
+                    //Instantiate(Apple, PositionApple, Quaternion.identity);
                     AppleActiv = true;
                 }
 
@@ -101,7 +129,8 @@ public class lotteryManager : MonoBehaviour
                 if (ShellActiv == false)
                 {
                     ShellUI.enabled = true;
-                    Instantiate(Shell, PositionShell, Quaternion.identity);
+                    Shell.SetActive(true);
+                    //Instantiate(Shell, PositionShell, Quaternion.identity);
                     ShellActiv = true;
                 }
 
@@ -111,41 +140,43 @@ public class lotteryManager : MonoBehaviour
             }
 
             // Gagner un bijou
-            if (RandomLoot > MaxRandomShell && RandomLoot <= MaxRandomJewell)
+            if (RandomLoot > MaxRandomShell && RandomLoot <= MaxRandomJewel)
             {
                 // Vérifier si l'image est déjà affichée
 
-                if (JewellActiv == false)
+                if (JewelActiv == false)
                 {
-                    JewellUI.enabled = true;
-                    Instantiate(Jewell, PositionJewell, Quaternion.identity);
-                    JewellActiv = true;
+                    JewelUI.enabled = true;
+                    Jewel.SetActive(true);
+                    //Instantiate(Jewel, PositionJewel, Quaternion.identity);
+                    JewelActiv = true;
                 }
 
-                NumberJewell++;
+                NumberJewel++;
                 ReportBonus.PowerTime++;
-                JewellUI.text = "" + NumberJewell;
+                JewelUI.text = "" + NumberJewel;
             }
 
-            // Gagner Aphrodite
+            // Gagner Helios
             if (RandomLoot == 100)
             {
                 // Vérifier si l'image est déjà affichée
 
-                if (AphroditeActiv == false)
+                if (HeliosActiv == false)
                 {
-                    AphroditeUI.enabled = true;
-                    Instantiate(Aphrodite, PositionAphrodite, Quaternion.identity);
-                    AphroditeActiv = true;
+                    HeliosUI.enabled = true;
+                    Helios.SetActive(true);
+                    //Instantiate(Helios, PositionHelios, Quaternion.identity);
+                    HeliosActiv = true;
                 }
 
-                NumberAphrodite++;
+                NumberHelios++;
 
-                GainAphrodite++;
+                GainHelios++;
 
                 ReportScore.HeartIncrease++;
                 ReportEnemy.ClickDamage++;
-                AphroditeUI.text = "" + NumberAphrodite;
+                HeliosUI.text = "" + NumberHelios;
             }
         }
     }
