@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ButtonBounce : MonoBehaviour
 {
+    // Déclaration des variables
     private Vector3 OriginalScale;
 
     void Start()
@@ -12,26 +13,26 @@ public class ButtonBounce : MonoBehaviour
         // Enregistrez l'échelle originale du bouton au démarrage
         OriginalScale = transform.localScale;
 
-        // Assurez-vous que le bouton a un composant Button attaché
+        // Vérifier la présence d'un bouton
         Button button = GetComponent<Button>();
         if (button != null)
         {
-            // Ajoutez une fonction pour gérer le clic du bouton
+            // Ajouter une fonction pour gérer le clic du bouton
             button.onClick.AddListener(Bounce);
         }
     }
 
     void Bounce()
     {
-        // Ajoutez votre logique spécifique au clic ici
-
-        // Effectuez l'effet de rebond
+        // Faire l'effet de rebond
+        // Utilisation du LeanTween pour l'effet "smooth"
         LeanTween.scale(gameObject, OriginalScale * 1.1f, 0.05f).setEase(LeanTweenType.easeOutQuad).setOnComplete(ResetScale);
     }
 
     void ResetScale()
     {
-        // Rétablissez l'échelle initiale après l'effet de rebond
+        // Rétablir l'échelle initiale après l'effet de rebond
+        // Utilisation du LeanTween pour l'effet "smooth"
         LeanTween.scale(gameObject, OriginalScale, 0.1f).setEase(LeanTweenType.easeInQuad);
     }
 }

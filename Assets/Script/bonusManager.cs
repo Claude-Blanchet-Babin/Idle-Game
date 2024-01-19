@@ -6,96 +6,113 @@ public class BonusManager : MonoBehaviour
 {
     // Déclaration des variables
 
+    // Lien vers autre script
     public ScoreManager ReportScore;
 
-    public int ThunderPrice;
-    public float ThunderTime;
-    public float ThunderCooldown;
+    // Paramètres des pouvoirs d'Athena
+    public int AthenaPrice;
+    public float AthenaTime;
+    public float AthenaCooldown;
+    public bool AthenaActiv;
 
-    public bool ThunderActiv;
+    // Paramètres des pouvoirs de Tyche
+    public int TychePrice;
+    public float TycheTime;
+    public float TycheCooldown;
+    public bool TycheActiv;
 
-    public int FriendPrice;
-    public float FriendTime;
-    public float FriendCooldown;
-
-    public bool FriendActiv;
-
+    // Durée des pouvoirs
     public float PowerTime;
+
+    // Mise en place des particules
+    public ParticleSystem AthenaParticle;
+    public ParticleSystem TycheParticle;
 
 
     // Start is called before the first frame update
     void Start()
     {
         // Mise à jour des variables
-        ThunderPrice = 10;
-        FriendPrice = 10;
+        AthenaPrice = 10;
+        TychePrice = 10;
 
-        ThunderActiv = false;
-        FriendActiv = false;
+        AthenaActiv = false;
+        TycheActiv = false;
 
         PowerTime = 5;
 
+        AthenaParticle.Stop();
+        TycheParticle.Stop();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Définir la durée d'activité
+        // Définir les temps des pouvoirs
 
-        FriendCooldown += Time.deltaTime;
-        ThunderCooldown += Time.deltaTime;
+        // Lancement des cooldown
+        TycheCooldown += Time.deltaTime;
+        AthenaCooldown += Time.deltaTime;
 
-        if (FriendActiv == true)
+        // Lancement de la durée d'utilisation
+        if (TycheActiv == true)
         {
-            FriendTime += Time.deltaTime;
+            TycheTime += Time.deltaTime;
         }
 
-        if (ThunderActiv == true)
+        if (AthenaActiv == true)
         {
-            ThunderTime += Time.deltaTime;
+            AthenaTime += Time.deltaTime;
         }
 
-        if (ThunderTime >= PowerTime)
+        // Vérification de la fin des pouvoirs
+        if (AthenaTime >= PowerTime)
         {
-            ThunderTime = 0;
-            ThunderActiv = false;
-            ThunderCooldown = 0;
+            AthenaTime = 0;
+            AthenaActiv = false;
+            AthenaCooldown = 0;
+            AthenaParticle.Stop();
         }
 
-        if (FriendTime >= PowerTime)
+        if (TycheTime >= PowerTime)
         {
-            FriendTime = 0;
-            FriendActiv = false;
-            ReportScore.MaxRandomGold += ReportScore.FriendBoost;
-            ReportScore.MaxRandomNormal -= ReportScore.FriendBoost;
-            FriendCooldown = 0;
-        }
-    }
-
-    public void Thunder()
-    {
-        // Définir le prix d'activation
-        if (ReportScore.ScoreGolden >= ThunderPrice && ThunderActiv == false && ThunderCooldown>=10)
-        {
-            ThunderActiv = true;
-            ReportScore.ScoreGolden -= ThunderPrice;
-            ReportScore.GoldenUI.text = ": " + Mathf.Floor(ReportScore.ScoreGolden);
-            ThunderTime = 0;
+            TycheTime = 0;
+            TycheActiv = false;
+            // Retour à la normale des valeurs de loot
+            ReportScore.MaxRandomGold += ReportScore.TycheBoost;
+            ReportScore.MaxRandomNormal -= ReportScore.TycheBoost;
+            TycheCooldown = 0;
+            TycheParticle.Stop();
         }
     }
 
-    public void Friendship()
+    public void Athena()
     {
-        // Définir le prix d'activation
-        if (ReportScore.ScoreGolden >= FriendPrice && FriendActiv == false && FriendCooldown >= 10)
+        // Définir le prix d'activation et vérifier le cooldown
+        if (ReportScore.ScoreGolden >= AthenaPrice && AthenaActiv == false && AthenaCooldown>=10)
         {
-            FriendActiv = true;
-            ReportScore.ScoreGolden -= FriendPrice;
+            AthenaActiv = true;
+            ReportScore.ScoreGolden -= AthenaPrice;
             ReportScore.GoldenUI.text = ": " + Mathf.Floor(ReportScore.ScoreGolden);
-            FriendTime = 0;
+            AthenaTime = 0;
+            AthenaParticle.Play();
+        }
+    }
 
-            ReportScore.MaxRandomGold -= ReportScore.FriendBoost;
-            ReportScore.MaxRandomNormal += ReportScore.FriendBoost;
+    public void Tyche()
+    {
+        // Définir le prix d'activation et vérifier le cooldown
+        if (ReportScore.ScoreGolden >= TychePrice && TycheActiv == false && TycheCooldown >= 10)
+        {
+            TycheActiv = true;
+            ReportScore.ScoreGolden -= TychePrice;
+            ReportScore.GoldenUI.text = ": " + Mathf.Floor(ReportScore.ScoreGolden);
+            TycheTime = 0;
+
+            // Changement des valeurs de loot
+            ReportScore.MaxRandomGold -= ReportScore.TycheBoost;
+            ReportScore.MaxRandomNormal += ReportScore.TycheBoost;
+            TycheParticle.Play();
         }
     }
 }

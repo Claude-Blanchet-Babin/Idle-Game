@@ -6,15 +6,15 @@ public class HoverDetectionInventory : MonoBehaviour
 {
     private bool IsMouseOver = false;
 
-    public GameObject Tooltip;
+    //public GameObject Tooltip;
     public GameObject Parchment;
 
     // Appelé lorsque la souris entre dans la zone du bouton
 
     void Start()
     {
-        Tooltip.SetActive(false);
-        Parchment.SetActive(false);
+        //Tooltip.SetActive(false);
+
     }
     public void OnMouseEnter()
     {
@@ -34,7 +34,7 @@ public class HoverDetectionInventory : MonoBehaviour
             // Ajoutez votre logique ici, qui sera exécutée tant que la souris est sur le bouton.
             //Debug.Log("La souris est sur le bouton !");
 
-            Tooltip.SetActive(true);
+            //Tooltip.SetActive(true);
             Parchment.SetActive(true);
 
         }
@@ -44,7 +44,7 @@ public class HoverDetectionInventory : MonoBehaviour
             // Ajoutez votre logique ici, qui sera exécutée tant que la souris est sur le bouton.
             //Debug.Log("La souris est sur le bouton !");
 
-            Tooltip.SetActive(false);
+            //Tooltip.SetActive(false);
             Parchment.SetActive(false);
 
         }

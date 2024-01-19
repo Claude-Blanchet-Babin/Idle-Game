@@ -14,6 +14,8 @@ public class EnemyManager : MonoBehaviour
     public float Rob;
     public TextMeshProUGUI NameEnemyUI;
 
+    public ParticleSystem AtmosphereParticle;
+
     public int ClickDamage;
 
     public float TimeSpawn;
@@ -29,15 +31,23 @@ public class EnemyManager : MonoBehaviour
 
     public GameObject DarkBackground;
 
+    public Transform ParentEnemyParticle;
+    public Transform ParentKillParticle;
+    public GameObject EnemyParticle;
+    public GameObject KillParticle;
+
     // Start is called before the first frame update
     void Start()
     {
+        AtmosphereParticle.Stop();
         DarkBackground.SetActive(false);
         EnemyActiv = false;
         ClickDamage = 1;
 
         // Définir un premier temps de spawn alétoire
         TimeSpawn = Random.Range(3, 10);
+
+        StartCoroutine(EnemyCoroutine());
     }
 
     // Update is called once per frame
@@ -59,10 +69,26 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    // Faire apparaitre les ennemis depuis une liste
+    public IEnumerator EnemyCoroutine()
+    {
+        while (true)
+        {
+            // Activer un gain automatique toute les secondes
+            if (EnemyActiv == true)
+            {
+                Rob += 0.001f;
+            }
+
+            yield return new WaitForSeconds(1);
+        }
+
+    }
+
+        // Faire apparaitre les ennemis depuis une liste
     public void EnemySpawn()
     {
         DarkBackground.SetActive(true);
+        AtmosphereParticle.Play();
         CurrentEnemy = EnemyList[Random.Range(0, EnemyList.Length)];
 
         // Enregistrez l'échelle originale du bouton au démarrage
@@ -83,15 +109,17 @@ public class EnemyManager : MonoBehaviour
         if (EnemyActiv == true)
         {
             // perdre plus de vie si le bonus est actif
-            if (ReportBonus.ThunderActiv == false)
+            if (ReportBonus.AthenaActiv == false)
             {
                 Hp-= ClickDamage;
+                Instantiate(EnemyParticle, ParentEnemyParticle.position, ParentEnemyParticle.rotation);
             }
 
             // perte normal sans bonus actif
-            if (ReportBonus.ThunderActiv == true)
+            if (ReportBonus.AthenaActiv == true)
             {
-                Hp-= ReportScore.ThunderDamage + ClickDamage;
+                Hp-= ReportScore.AthenaDamage + ClickDamage;
+                Instantiate(EnemyParticle, ParentEnemyParticle.position, ParentEnemyParticle.rotation);
             }
 
             LeanTween.scale(gameObject, OriginalScale * 1.1f, 0.05f).setEase(LeanTweenType.easeOutQuad).setOnComplete(ResetScale);
@@ -106,6 +134,8 @@ public class EnemyManager : MonoBehaviour
             Timer = 0;
             NameEnemyUI.text = "";
             DarkBackground.SetActive(false);
+            AtmosphereParticle.Stop();
+            Instantiate(KillParticle, ParentKillParticle.position, ParentKillParticle.rotation);
         }
     }
 

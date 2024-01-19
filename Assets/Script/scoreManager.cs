@@ -44,10 +44,10 @@ public class ScoreManager : MonoBehaviour
     // Gestion des bonus
     public BonusManager ReportBonus;
 
-    public float ThunderBoost;
-    public int ThunderDamage;
+    public float AthenaBoost;
+    public int AthenaDamage;
 
-    public int FriendBoost;
+    public int TycheBoost;
 
 
     // Start is called before the first frame update
@@ -57,9 +57,9 @@ public class ScoreManager : MonoBehaviour
         AutoPrice = 1;
         AutoPriceUpgrade = 1;
         GainAuto = 1;
-        ThunderBoost = 10;
-        ThunderDamage = 3;
-        FriendBoost = 10;
+        AthenaBoost = 10;
+        AthenaDamage = 3;
+        TycheBoost = 10;
 
         MaxRandomNormal = 70;
         MaxRandomGold = 95;
@@ -86,7 +86,7 @@ public class ScoreManager : MonoBehaviour
         if (RandomLoot <= MaxRandomNormal)
         {
             // Gagner un seul coeur si le boost n'est pas actif
-            if(ReportBonus.ThunderActiv == false)
+            if(ReportBonus.AthenaActiv == false)
             {
                 ScoreHearts+= HeartIncrease;
                 HeartUI.text = ": " + Mathf.Floor(ScoreHearts);
@@ -94,9 +94,9 @@ public class ScoreManager : MonoBehaviour
             }
 
             // Gagner plus de coeurs si le boost est actif
-            if (ReportBonus.ThunderActiv == true)
+            if (ReportBonus.AthenaActiv == true)
             {
-                ScoreHearts+=ThunderBoost + HeartIncrease;
+                ScoreHearts+=AthenaBoost + HeartIncrease;
                 HeartUI.text = ": " + Mathf.Floor(ScoreHearts);
                 Instantiate(RedParticle, Parent.position, Parent.rotation);
             }

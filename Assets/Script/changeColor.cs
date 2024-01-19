@@ -5,46 +5,52 @@ using UnityEngine.UI;
 
 public class ChangeColor : MonoBehaviour
 {
+    // Déclaration des variables
+
+    // Lien vers autre script
     public BonusManager ReportBonus;
 
-    public Button ThunderButton;
-    public Button FriendButton;
+    public Button AthenaButton;
+    public Button TycheButton;
 
-    public Color OriginalThunderColor;
-    public Color OriginalFriendColor;
+    public Color OriginalAthenaColor;
+    public Color OriginalTycheColor;
+
+    // Mise en place de la couleur pendant le cooldown
+    public Color CooldownColor;
 
 
     // Start is called before the first frame update
     void Start()
     {
         // Enregistrez la couleur d'origine du bouton
-        OriginalThunderColor = ThunderButton.colors.normalColor;
-
-        OriginalFriendColor = FriendButton.colors.normalColor;
-
+        OriginalAthenaColor = AthenaButton.colors.normalColor;
+        OriginalTycheColor = TycheButton.colors.normalColor;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (ReportBonus.ThunderCooldown < 10)
+        // Vérification de la durée du cooldown pour changement de couleur
+
+        if (ReportBonus.AthenaCooldown < 10)
         {
-            ThunderButton.image.color = Color.black;
+            AthenaButton.image.color = CooldownColor;
         }
 
-        if (ReportBonus.ThunderCooldown >= 10)
+        if (ReportBonus.AthenaCooldown >= 10)
         {
-            ThunderButton.image.color = OriginalThunderColor;
+            AthenaButton.image.color = OriginalAthenaColor;
         }
 
-        if (ReportBonus.FriendCooldown < 10)
+        if (ReportBonus.TycheCooldown < 10)
         {
-            FriendButton.image.color = Color.black;
+            TycheButton.image.color = CooldownColor;
         }
 
-        if (ReportBonus.FriendCooldown >= 10)
+        if (ReportBonus.TycheCooldown >= 10)
         {
-            FriendButton.image.color = OriginalThunderColor;
+            TycheButton.image.color = OriginalAthenaColor;
         }
 
     }

@@ -51,15 +51,23 @@ public class LotteryManager : MonoBehaviour
 
     public int GainHelios =0;
 
-    public GameObject AppleBackground;
-    public GameObject ShellBackground;
-    public GameObject JewelBackground;
-    public GameObject HeliosBackground;
-
     public GameObject AppleParchment;
     public GameObject ShellParchment;
     public GameObject JewelParchment;
     public GameObject HeliosParchment;
+
+    public GameObject AppleParticle;
+    public GameObject ShellParticle;
+    public GameObject JewelParticle;
+    public GameObject HeliosParticle;
+    public GameObject AphroditeParticle;
+
+    public Transform ParentAppleParticle;
+    public Transform ParentShellParticle;
+    public Transform ParentJewelParticle;
+    public Transform ParentHeliosParticle;
+    public Transform ParentAphroditeParticle;
+
 
 
     // Start is called before the first frame update
@@ -74,11 +82,6 @@ public class LotteryManager : MonoBehaviour
         Shell.SetActive(false);
         Jewel.SetActive(false);
         Helios.SetActive(false);
-
-        AppleBackground.SetActive(false);
-        ShellBackground.SetActive(false);
-        JewelBackground.SetActive(false);
-        HeliosBackground.SetActive(false);
 
         AppleParchment.SetActive(false);
         ShellParchment.SetActive(false);
@@ -99,6 +102,7 @@ public class LotteryManager : MonoBehaviour
 
             ReportScore.ScoreRainbow -= 5;
             ReportScore.RainbowUI.text = ": " + Mathf.Floor(ReportScore.ScoreRainbow);
+            Instantiate(AphroditeParticle, ParentAphroditeParticle.position, ParentAphroditeParticle.rotation);
 
             // Définir un nombre alétoire lors d'un clic
             RandomLoot = Random.Range(Minimum, Maximum + 1);
@@ -119,6 +123,7 @@ public class LotteryManager : MonoBehaviour
                 NumberApple++;
                 ReportEnemy.ClickDamage++;
                 AppleUI.text = "" + NumberApple;
+                Instantiate(AppleParticle, ParentAppleParticle.position, ParentAppleParticle.rotation);
             }
 
             // Gagner un coquillage
@@ -137,6 +142,7 @@ public class LotteryManager : MonoBehaviour
                 NumberShell++;
                 ReportScore.HeartIncrease++;
                 ShellUI.text = "" + NumberShell;
+                Instantiate(ShellParticle, ParentShellParticle.position, ParentShellParticle.rotation);
             }
 
             // Gagner un bijou
@@ -155,6 +161,7 @@ public class LotteryManager : MonoBehaviour
                 NumberJewel++;
                 ReportBonus.PowerTime++;
                 JewelUI.text = "" + NumberJewel;
+                Instantiate(JewelParticle, ParentJewelParticle.position, ParentJewelParticle.rotation);
             }
 
             // Gagner Helios
@@ -177,6 +184,7 @@ public class LotteryManager : MonoBehaviour
                 ReportScore.HeartIncrease++;
                 ReportEnemy.ClickDamage++;
                 HeliosUI.text = "" + NumberHelios;
+                Instantiate(HeliosParticle, ParentHeliosParticle.position, ParentHeliosParticle.rotation);
             }
         }
     }
