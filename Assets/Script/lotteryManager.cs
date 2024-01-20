@@ -106,6 +106,12 @@ public class LotteryManager : MonoBehaviour
     public void Lottery()
     {
         // Vérification du prix d'achat
+
+        //// !!!!! TRICHE PRINCIPELE !!!!! ////
+        //// CHANGER LA VERIFICATION DE PRIX PAR UNE VALEUR NEGATIVE ////
+        //// PASSER DE 5 A - 50000 ////
+        //// RETOURNER EN JEU ET UTILISER LE POUVOIR D'APHRODITE A PLUSIEURS REPRISES////
+        
         if (ReportScore.ScoreRainbow >= 5)
         {
             // Mise à jour de la quantité de coeur arc-en-ciel
