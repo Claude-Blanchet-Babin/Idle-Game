@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00999dcedc25f60418ba40e26175d4ce, type: 3}
   m_Name: Ares
   m_EditorClassIdentifier: 
-  Appareance: {fileID: 21300000, guid: 40e3ff41c88d72c43a3c8f564aa0d276, type: 3}
-  HealPoint: 10
+  Appearance: {fileID: 21300000, guid: 40e3ff41c88d72c43a3c8f564aa0d276, type: 3}
+  HealPoint: 50
   EnemyName: The wrath of Ares
-  EnemyRob: 0.02
+  EnemyRob: 0.04

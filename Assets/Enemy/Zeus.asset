@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00999dcedc25f60418ba40e26175d4ce, type: 3}
   m_Name: Zeus
   m_EditorClassIdentifier: 
-  Appareance: {fileID: 21300000, guid: 4cbedf824121546448dc009f7fce485f, type: 3}
-  HealPoint: 20
+  Appearance: {fileID: 21300000, guid: 4cbedf824121546448dc009f7fce485f, type: 3}
+  HealPoint: 80
   EnemyName: The hatred of Zeus
-  EnemyRob: 0.03
+  EnemyRob: 0.05

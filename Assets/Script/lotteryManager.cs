@@ -9,13 +9,14 @@ public class LotteryManager : MonoBehaviour
 
     // Gestion du loot des coeurs
     public int RandomLoot;
-    public int Minimum = 0;
-    public int Maximum = 100;
+    public int Minimum;
+    public int Maximum;
 
-    public int MaxRandomApple = 60;
-    public int MaxRandomShell = 90;
-    public int MaxRandomJewel = 99;
+    public int MaxRandomApple;
+    public int MaxRandomShell;
+    public int MaxRandomJewel;
 
+    // Gestion de l'inventaire
     public int NumberApple;
     public int NumberShell;
     public int NumberJewel;
@@ -31,31 +32,23 @@ public class LotteryManager : MonoBehaviour
     public bool JewelActiv = false;
     public bool HeliosActiv = false;
 
-    /*
-    public Vector3 PositionApple = new Vector3(8.3f, 4f, 0f);
-    public Vector3 PositionShell = new Vector3(6.3f, 4f, 0f);
-    public Vector3 PositionJewel = new Vector3(4.3f, 4f, 0f);
-    public Vector3 PositionHelios = new Vector3(2.3f, 2f, 0f);
-    */
-
     public GameObject Apple;
     public GameObject Shell;
     public GameObject Jewel;
     public GameObject Helios;
 
+    // Lien vers autre script
     public ScoreManager ReportScore;
-
     public BonusManager ReportBonus;
-
     public EnemyManager ReportEnemy;
 
-    public int GainHelios =0;
-
+    // Gestion de l'affichage de l'inventaire
     public GameObject AppleParchment;
     public GameObject ShellParchment;
     public GameObject JewelParchment;
     public GameObject HeliosParchment;
 
+    // Gestion des particules
     public GameObject AppleParticle;
     public GameObject ShellParticle;
     public GameObject JewelParticle;
@@ -68,11 +61,13 @@ public class LotteryManager : MonoBehaviour
     public Transform ParentHeliosParticle;
     public Transform ParentAphroditeParticle;
 
-
+    // Mise en place du bonus spécial
+    public int GainHelios;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Remise à zéro de l'affichage des éléments
         AppleUI.enabled = false;
         ShellUI.enabled = false;
         JewelUI.enabled = false;
@@ -87,6 +82,18 @@ public class LotteryManager : MonoBehaviour
         ShellParchment.SetActive(false);
         JewelParchment.SetActive(false);
         HeliosParchment.SetActive(false);
+
+        //// AJUSTEMENT TAUX DE LOOT SI BESOIN ////
+
+        MaxRandomApple = 60;
+        MaxRandomShell = 90;
+        MaxRandomJewel = 99;
+
+        Minimum = 0;
+        Maximum = 100;
+
+        // Bonus spcécial à zéro au début de la partie
+        GainHelios = 0;
     }
 
     // Update is called once per frame
@@ -95,19 +102,23 @@ public class LotteryManager : MonoBehaviour
         
     }
 
+    // Fonction appelé lors d'un click sur Aphrodite
     public void Lottery()
     {
-        if (ReportScore.ScoreRainbow >= -50000)
+        // Vérification du prix d'achat
+        if (ReportScore.ScoreRainbow >= 5)
         {
-
+            // Mise à jour de la quantité de coeur arc-en-ciel
             ReportScore.ScoreRainbow -= 5;
             ReportScore.RainbowUI.text = ": " + Mathf.Floor(ReportScore.ScoreRainbow);
+
+            // Affichage des particules
             Instantiate(AphroditeParticle, ParentAphroditeParticle.position, ParentAphroditeParticle.rotation);
 
             // Définir un nombre alétoire lors d'un clic
             RandomLoot = Random.Range(Minimum, Maximum + 1);
 
-            // Gagner une pomme
+            // Gagner une pomme de la discorde
             if (RandomLoot <= MaxRandomApple)
             {
                 // Vérifier si l'image est déjà affichée
@@ -116,13 +127,15 @@ public class LotteryManager : MonoBehaviour
                 {
                     AppleUI.enabled = true;
                     Apple.SetActive(true);
-                    //Instantiate(Apple, PositionApple, Quaternion.identity);
                     AppleActiv = true;
                 }
 
                 NumberApple++;
-                ReportEnemy.ClickDamage++;
                 AppleUI.text = "" + NumberApple;
+
+                // Augmentation des dégâts
+                ReportEnemy.ClickDamage++;
+
                 Instantiate(AppleParticle, ParentAppleParticle.position, ParentAppleParticle.rotation);
             }
 
@@ -130,18 +143,19 @@ public class LotteryManager : MonoBehaviour
             if (RandomLoot > MaxRandomApple && RandomLoot <= MaxRandomShell)
             {
                 // Vérifier si l'image est déjà affichée
-
                 if (ShellActiv == false)
                 {
                     ShellUI.enabled = true;
                     Shell.SetActive(true);
-                    //Instantiate(Shell, PositionShell, Quaternion.identity);
                     ShellActiv = true;
                 }
 
                 NumberShell++;
-                ReportScore.HeartIncrease++;
                 ShellUI.text = "" + NumberShell;
+
+                // Augmentation de la puissance du click (pour le bouton coeur)
+                ReportScore.HeartIncrease++;
+
                 Instantiate(ShellParticle, ParentShellParticle.position, ParentShellParticle.rotation);
             }
 
@@ -149,7 +163,6 @@ public class LotteryManager : MonoBehaviour
             if (RandomLoot > MaxRandomShell && RandomLoot <= MaxRandomJewel)
             {
                 // Vérifier si l'image est déjà affichée
-
                 if (JewelActiv == false)
                 {
                     JewelUI.enabled = true;
@@ -159,8 +172,11 @@ public class LotteryManager : MonoBehaviour
                 }
 
                 NumberJewel++;
-                ReportBonus.PowerTime++;
                 JewelUI.text = "" + NumberJewel;
+
+                // Augmentation de la durée des pouvoirs d'Athena et Tyche
+                ReportBonus.PowerTime++;
+
                 Instantiate(JewelParticle, ParentJewelParticle.position, ParentJewelParticle.rotation);
             }
 
@@ -168,22 +184,21 @@ public class LotteryManager : MonoBehaviour
             if (RandomLoot == 100)
             {
                 // Vérifier si l'image est déjà affichée
-
                 if (HeliosActiv == false)
                 {
                     HeliosUI.enabled = true;
                     Helios.SetActive(true);
-                    //Instantiate(Helios, PositionHelios, Quaternion.identity);
                     HeliosActiv = true;
                 }
 
                 NumberHelios++;
+                HeliosUI.text = "" + NumberHelios;
 
+                // Augmentation du pouvoir Spécial, Amélioration dégâts, Amélioration puissance click
                 GainHelios++;
-
                 ReportScore.HeartIncrease++;
                 ReportEnemy.ClickDamage++;
-                HeliosUI.text = "" + NumberHelios;
+
                 Instantiate(HeliosParticle, ParentHeliosParticle.position, ParentHeliosParticle.rotation);
             }
         }

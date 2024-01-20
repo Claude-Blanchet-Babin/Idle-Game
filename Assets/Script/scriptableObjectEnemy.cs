@@ -6,8 +6,8 @@ using UnityEngine;
 public class ScriptableObjectEnemy : ScriptableObject
 {
     // Définir les différentes caractéristiques des ennemis
-    public Sprite Appareance;
-    public int HealPoint;
+    public Sprite Appearance;
+    public float HealPoint;
     public string EnemyName;
     public float EnemyRob;
 }

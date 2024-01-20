@@ -31,6 +31,8 @@ public class ChangeColor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //// MODIFICATION DUREE COOLDOWN SI BESOIN ////
+
         // Vérification de la durée du cooldown pour changement de couleur
 
         if (ReportBonus.AthenaCooldown < 10)

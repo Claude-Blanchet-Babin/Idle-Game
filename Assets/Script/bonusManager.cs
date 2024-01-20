@@ -32,6 +32,8 @@ public class BonusManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //// AJUSTEMENT PRIX ET TEMPS DE POUVOIR SI BESOIN ////
+
         // Mise à jour des variables
         AthenaPrice = 10;
         TychePrice = 10;
@@ -86,8 +88,11 @@ public class BonusManager : MonoBehaviour
         }
     }
 
+
     public void Athena()
     {
+        //// AJUSTEMENT DUREE COOLDOWN SI BESOIN ////
+
         // Définir le prix d'activation et vérifier le cooldown
         if (ReportScore.ScoreGolden >= AthenaPrice && AthenaActiv == false && AthenaCooldown>=10)
         {
@@ -101,6 +106,8 @@ public class BonusManager : MonoBehaviour
 
     public void Tyche()
     {
+        //// AJUSTEMENT DUREE COOLDOWN SI BESOIN ////
+
         // Définir le prix d'activation et vérifier le cooldown
         if (ReportScore.ScoreGolden >= TychePrice && TycheActiv == false && TycheCooldown >= 10)
         {

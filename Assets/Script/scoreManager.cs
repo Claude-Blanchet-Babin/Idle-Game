@@ -9,8 +9,8 @@ public class ScoreManager : MonoBehaviour
 
     // Gestion du loot des coeurs
     public int RandomLoot;
-    public int Minimum = 0;
-    public int Maximum = 100;
+    public int Minimum;
+    public int Maximum;
 
     public int MaxRandomNormal;
     public int MaxRandomGold;
@@ -49,13 +49,19 @@ public class ScoreManager : MonoBehaviour
 
     public int TycheBoost;
 
+    // Gestion du curseur au lancement
+    public Texture2D CursorArrow;
+
 
     // Start is called before the first frame update
     void Start()
     {
+
+        //// AJUSTEMENT DES GAINS, PUISSANCE CLICK, PRIX, TAUX DE LOOT SI BESOIN ////
+    
         // Mise à jour des variables
-        AutoPrice = 1;
-        AutoPriceUpgrade = 1;
+        AutoPrice = 15;
+        AutoPriceUpgrade = 20;
         GainAuto = 1;
         AthenaBoost = 10;
         AthenaDamage = 3;
@@ -66,6 +72,11 @@ public class ScoreManager : MonoBehaviour
 
         HeartIncrease = 1; 
         GoldenIncrease = 1;
+
+        Minimum = 0;
+        Maximum = 100;
+
+        Cursor.SetCursor(CursorArrow, Vector2.zero, CursorMode.Auto);
     }
 
     // Update is called once per frame

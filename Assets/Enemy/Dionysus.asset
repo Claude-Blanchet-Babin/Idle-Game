@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00999dcedc25f60418ba40e26175d4ce, type: 3}
   m_Name: Dionysus
   m_EditorClassIdentifier: 
-  Appareance: {fileID: 21300000, guid: 458554865e01061499952ecea4430e2d, type: 3}
-  HealPoint: 10
+  Appearance: {fileID: 21300000, guid: 458554865e01061499952ecea4430e2d, type: 3}
+  HealPoint: 25
   EnemyName: The grudge of Dionysus
-  EnemyRob: 0.1
+  EnemyRob: 0.03
